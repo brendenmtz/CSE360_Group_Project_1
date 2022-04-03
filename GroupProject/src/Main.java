@@ -24,33 +24,35 @@ public class Main extends Application{
 
 	//@Override
 	private static Stage stg;
+	
+	String currentAccount;
+	ArrayList<User> userList;
+	User user;
+	ArrayList<Item> menu;
+	ArrayList<Order> orderList;
 	public void start(Stage stage) throws Exception{
 		stg = stage;
-		stage.setResizable(false);
-		Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+		userList = getUserList();
+		for(int i = 0; i < userList.size(); i++) {
+			System.out.println(userList.get(i).username);
+			System.out.println(userList.get(i).password);
+			System.out.println(userList.get(i).card);
+			System.out.println(userList.get(i).role);
+		}
 		
-        //StackPane root = new StackPane();
-
-        // departList to be used in both generatePane & selectPane
-        //departList = new ArrayList<Department>();
-
-        //selectPane = new SelectPane(departList);
-        //createPane = new GeneratePane(departList, selectPane);
-
-        //tabPane = new TabPane();
-
-        //Tab tab1 = new Tab();
-        //tab1.setText("Add Department");
-        //tab1.setContent(createPane);
-
-        //Tab tab2 = new Tab();
-        //tab2.setText("Select Department");
-        //tab2.setContent(selectPane);
-
-        //tabPane.getSelectionModel().select(0);
-        //tabPane.getTabs().addAll(tab1, tab2);
-
-        //root.getChildren().add(tabPane);
+		
+		stage.setResizable(false);
+		//LoginController loginInfo = new LoginController("");
+		FXMLLoader loader = new FXMLLoader();
+		
+		loader.setLocation(getClass().getResource("login.fxml"));
+		
+		Parent root = loader.load();
+		System.out.println("here");
+		LoginController controller = loader.getController();
+		controller.setList(menu, orderList, "login");
+		//controller.changeScene(root, user, menu, orderList);
+		//Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
 
         Scene scene = new Scene(root, 600, 400);
         stage.setTitle("Menu App");
@@ -58,23 +60,63 @@ public class Main extends Application{
         stage.show();
     }
 	
-	public void changeScene(String fxml) throws IOException{
-		Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+	public ArrayList<User> getUserList() {
+		ArrayList<User> users = new ArrayList<>();
+		try {
+            FileReader reader = new FileReader("Accounts.txt");
+            BufferedReader bufferedReader = new BufferedReader(reader);
+ 
+            String line;
+ 
+            while ((line = bufferedReader.readLine()) != null) {
+                //System.out.println(line);
+            	String[] arrOfStr = line.split(" ", 4);//used for when reading from file
+            	User u = new User();
+            	u.username = arrOfStr[0];
+            	u.password = arrOfStr[1];
+            	u.card = arrOfStr[2];
+            	u.role = arrOfStr[3];
+                users.add(u);
+            }
+            reader.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return users;
+	}
+	
+	public void changeScene(Parent pane) throws IOException{
+		//System.out.println("changing Scene");
+		//System.out.println(currentAccount);
+		/*FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource(fxml));
+		Parent pane = loader.load();
+		if(fxml.compareTo("userAccount.fxml") == 0) {
+			System.out.println("UserAccount");
+			UserAccountController controller = loader.getController();
+			controller.accountUser = currentAccount;
+			System.out.println(currentAccount);
+		}
+		if(fxml.compareTo("menu.fxml") == 0) {
+			System.out.println("menu");
+			MenuController controller = loader.getController();
+			controller.accountUser = currentAccount;
+			System.out.println(currentAccount);
+		}*/
+		
+		//System.out.println(account);
+		System.out.println("here3");
 		stg.getScene().setRoot(pane);
 	}
-
+	//ArrayList<User> userList;
     public static void main(String[] args) {
+    	
     	//System.out.println("no");
     	//can build the menu and customer/owner list here
     	
         //for (String a : arrOfStr)
     	//uncomment to reset the users
-    	/*String test = "Brenden 123 1000000000000000 Owner";
-    	String[] arrOfStr = test.split(" ", 4);//used for when reading from file
-        System.out.println(arrOfStr[0]);
-        System.out.println(arrOfStr[1]);
-        System.out.println(arrOfStr[2]);
-        System.out.println(arrOfStr[3]);*/
     	/*
     	try {
             FileWriter writer = new FileWriter("Accounts.txt", false);
@@ -87,26 +129,8 @@ public class Main extends Application{
             e.printStackTrace();
         }
     	*/
-		try {
-            FileReader reader = new FileReader("Accounts.txt");
-            BufferedReader bufferedReader = new BufferedReader(reader);
- 
-            String line;
- 
-            while ((line = bufferedReader.readLine()) != null) {
-                //System.out.println(line);
-            	String[] arrOfStr = line.split(" ", 4);//used for when reading from file
-                System.out.println(arrOfStr[0]);
-                System.out.println(arrOfStr[1]);
-                System.out.println(arrOfStr[2]);
-                System.out.println(arrOfStr[3]);
-                
-            }
-            reader.close();
- 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	
+		
         launch(args);
         
     }

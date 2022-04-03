@@ -16,6 +16,7 @@
                </font>
             </Label>
             <Button fx:id="menuBack" layoutY="2.0" mnemonicParsing="false" onAction="#menuBack" text="Back" />
+            <Button fx:id="userAccount" layoutX="540.0" layoutY="2.0" mnemonicParsing="false" onAction="#userAccount" text="Account" />
          </children>
       </AnchorPane>
    </center>

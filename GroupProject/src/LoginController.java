@@ -10,15 +10,16 @@ import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 
-public class LoginController {
-
+public class LoginController extends Information{
+	//String account;
+	//ArrayList<User> userList;//go to every controller give them an 
 	public LoginController() {
-
+		user = new User();
 	}
-
 	@FXML
 	private Button userLogin;
 	@FXML
@@ -32,13 +33,17 @@ public class LoginController {
 
 	public void userLogIn(ActionEvent event) throws IOException {
 		//System.out.println("no");
+//		/System.out.println(user.username);
+		
 	    checkLogin();
 	
 	}
+	
 
 	private void checkLogin() throws IOException {
-	    Main m = new Main();
+	    //Main m = new Main();
 	    wrongLogIn.setText("");
+	    //String account = "";
 	    String name = username.getText().toString();
 	    String pass = password.getText().toString();
 	    if(username.getText().isEmpty() || password.getText().isEmpty()) {
@@ -59,19 +64,18 @@ public class LoginController {
             while (((line = bufferedReader.readLine()) != null) && !validLogin) {
                 //System.out.println(line);
             	String[] userInfo = line.split(" ", 4);//used for when reading from file
-            	//System.out.println("Before Name");
             	if(userInfo[0].compareTo(name) == 0) {
-            		//System.out.println("Before pass");
             		if(userInfo[1].compareTo(pass) == 0) {
-            			//System.out.println("Before owner");
             			validLogin = true;
+            			user.username = userInfo[0];
+            			user.password = userInfo[1];
+            			user.card = userInfo[2];
+            			user.role = userInfo[3];
             			if(userInfo[3].compareTo("Owner") == 0) {
-            				//System.out.println("In owner");
             				customerLogin = false;
             			}
             		}
             	}
-            	//System.out.println("After owner");
                 
             }
             reader.close();
@@ -79,23 +83,51 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-	    //System.out.println("Before checks");
-	    if(validLogin && customerLogin) {
-	    	//System.out.println("Going to menu");
-	    	m.changeScene("menu.fxml");
-	    }else if(validLogin && !customerLogin){
-	    	System.out.println("Owner");
-	    	m.changeScene("menu.fxml");
+	    System.out.println("here2");
+	    scenceCheck(validLogin, customerLogin);
+	    
+
+	}
+	
+	public void scenceCheck(boolean login, boolean customer) throws IOException {
+		
+		if(login && customer) {
+			loader.setLocation(getClass().getResource("menu.fxml"));
+			pane = loader.load();
+			MenuController controller = loader.getController();
+			controller.changeScene(pane, user, menu, orderList, "customer");
+			controller.accountVis();
+			//controller.accountUser = account;
+	    	//System.out.println("Going to menu 1");
+	    	//m.changeScene(pane);
+	    	
+	    }else if(login && !customer){
+	    	//FXMLLoader loader = new FXMLLoader();
+	    	
+	    	loader.setLocation(getClass().getResource("ownerAccount.fxml"));
+	    	
+			pane = loader.load();
+			System.out.println("here 3");
+			OwnerAccountController controller = loader.getController();
+			controller.changeScene(pane, user, menu, orderList, "owner");
+			//controller.accountUser = account;
+	    	//System.out.println("Going to menu 1");
+	    	//m.changeScene(pane);
 	    }else {
 	    	wrongLogIn.setText("Wrong username or password!");
 	    	return;
 	    }
-
 	}
 	
 	public void createAccountBtn(ActionEvent event) throws IOException {
 	    Main m = new Main();
-	    m.changeScene("createAccount.fxml");
+	    //m.currentAccount = account;
+	    //System.out.println(account);
+	    System.out.println("Above is the account in createAccountBtn");
+	    Parent pane = FXMLLoader.load(getClass().getResource("createAccount.fxml"));
+	    //CreateAccountController ac = new CreateAccountController(account);
+	    m.changeScene(pane);
+	    //CreateAccountController ac = new CreateAccountController(account);
 	
 	}
 }

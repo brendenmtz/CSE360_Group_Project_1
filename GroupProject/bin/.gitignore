@@ -26,3 +26,9 @@
 /login.fxml
 /CreateAccountController.class
 /createAccount.fxml
+/UserAccount.class
+/userAccount.fxml
+/UserAccountController.class
+/Information.class
+/OwnerAccountController.class
+/ownerAccount.fxml
