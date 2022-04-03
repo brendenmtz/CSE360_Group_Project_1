@@ -41,18 +41,60 @@ public class CreateAccountController {
 	public void createAccount(ActionEvent event) throws IOException{
 		//check if username matches any previous username
 		
+		wrongUsernameText.setText("");
+		wrongPasswordText.setText("");
+		wrongCardText.setText("");
 		String name = username.getText().toString();
 		String pass = password.getText().toString();
 		String card = creditCard.getText().toString();
-		String str = "Brenden 123 1000000000000000";
+		if(name.isEmpty() || pass.isEmpty() || card.isEmpty()) {
+			wrongUsernameText.setText("Field was empty");
+			return;
+		}
+		if(card.length() != 16) {
+			wrongCardText.setText("Card must be 16 digits\n your is only " + card.length());
+			return;
+		}
+		boolean nameMatch = false;
+		//String str = "Brenden 123 1000000000000000";
+		try {
+            FileReader reader = new FileReader("Accounts.txt");
+            BufferedReader bufferedReader = new BufferedReader(reader);
+ 
+            String line;
+ 
+            while (((line = bufferedReader.readLine()) != null) && !nameMatch) {
+                //System.out.println(line);
+            	String[] userInfo = line.split(" ", 3);//used for when reading from file
+            	System.out.println(card.length());
+            	if(userInfo[0].compareTo(name) == 0) {
+            		nameMatch = true;
+            	}
+                System.out.println(userInfo[0]);
+                System.out.println(userInfo[1]);
+                System.out.println(userInfo[2]);
+                
+            }
+            reader.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
 		//no invalid password
 		//check if card is 16 digits 1000000000000000
 		//add to account list
 		//write to file
 		//System.out.println("here");
-		writeToFile(name, pass, card);
 		
+		if(!nameMatch) {
+			writeToFile(name, pass, card);
+		}
+		else {
+			wrongUsernameText.setText("Invalid Username");
+			//wrongPasswordText.setText("Invalid Password");
+			//wrongCardText.setText("Invalid Card");
+		}
 	}
 	
 	public void writeToFile(String user, String password, String card) {
