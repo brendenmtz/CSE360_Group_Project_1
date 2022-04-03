@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <center>
       <AnchorPane prefHeight="409.0" prefWidth="605.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,8 +27,9 @@
             <Label layoutX="170.0" layoutY="231.0" text="Password" textFill="WHITE" />
             <TextField fx:id="username" layoutX="238.0" layoutY="192.0" promptText="Username" />
             <TextField fx:id="password" layoutX="238.0" layoutY="227.0" promptText="Passowrd" />
-            <Button fx:id="loginBtn" layoutX="287.0" layoutY="271.0" mnemonicParsing="false" text="Log In" />
-            <Button fx:id="createAccountBtn" layoutX="264.0" layoutY="316.0" mnemonicParsing="false" text="Create Account" />
+            <Button fx:id="button" layoutX="278.0" layoutY="270.0" mnemonicParsing="false" onAction="#userLogIn" text="Log In" />
+            <Button layoutX="254.0" layoutY="316.0" mnemonicParsing="false" text="Create Account" />
+            <Label fx:id="wrongLogIn" layoutX="289.0" layoutY="151.0" textFill="RED" />
          </children>
       </AnchorPane>
    </center>

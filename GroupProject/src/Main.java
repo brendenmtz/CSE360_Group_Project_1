@@ -11,13 +11,18 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.*;
 import javafx.scene.layout.StackPane;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class Main extends Application{
 
 	//@Override
+	private static Stage stg;
 	public void start(Stage stage) throws Exception{
+		stg = stage;
+		stage.setResizable(false);
 		Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 		
         //StackPane root = new StackPane();
@@ -48,9 +53,14 @@ public class Main extends Application{
         stage.setScene(scene);
         stage.show();
     }
+	
+	public void changeScene(String fxml) throws IOException{
+		Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+		stg.getScene().setRoot(pane);
+	}
 
     public static void main(String[] args) {
-    	System.out.print("no\n");
+    	//System.out.println("no");
     	//can build the menu and customer/owner list here
         launch(args);
         
