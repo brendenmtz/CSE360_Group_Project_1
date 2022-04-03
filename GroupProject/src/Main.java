@@ -14,6 +14,7 @@ import javafx.scene.layout.StackPane;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class Main extends Application{
 	ArrayList<Order> orderList;
 	public void start(Stage stage) throws Exception{
 		stg = stage;
+		createMenu();
 		userList = getUserList();
 		for(int i = 0; i < userList.size(); i++) {
 			System.out.println(userList.get(i).username);
@@ -58,6 +60,7 @@ public class Main extends Application{
         stage.setTitle("Menu App");
         stage.setScene(scene);
         stage.show();
+        
     }
 	
 	public ArrayList<User> getUserList() {
@@ -87,26 +90,7 @@ public class Main extends Application{
 	}
 	
 	public void changeScene(Parent pane) throws IOException{
-		//System.out.println("changing Scene");
-		//System.out.println(currentAccount);
-		/*FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource(fxml));
-		Parent pane = loader.load();
-		if(fxml.compareTo("userAccount.fxml") == 0) {
-			System.out.println("UserAccount");
-			UserAccountController controller = loader.getController();
-			controller.accountUser = currentAccount;
-			System.out.println(currentAccount);
-		}
-		if(fxml.compareTo("menu.fxml") == 0) {
-			System.out.println("menu");
-			MenuController controller = loader.getController();
-			controller.accountUser = currentAccount;
-			System.out.println(currentAccount);
-		}*/
-		
-		//System.out.println(account);
-		System.out.println("here3");
+		//System.out.println("here3");
 		stg.getScene().setRoot(pane);
 	}
 	//ArrayList<User> userList;
@@ -133,6 +117,32 @@ public class Main extends Application{
 		
         launch(args);
         
+    }
+    
+    public void createMenu() {
+    	//this code will create a file by the specified name
+    	/*try {
+    	      File myObj = new File("Menu.txt");
+    	      if (myObj.createNewFile()) {
+    	        System.out.println("File created: " + myObj.getName());
+    	      } else {
+    	        System.out.println("File already exists.");
+    	      }
+    	    } catch (IOException e) {
+    	      System.out.println("An error occurred.");
+    	      e.printStackTrace();
+
+    	    }*/
+    	try {
+            FileWriter writer = new FileWriter("Menu.txt", false);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write("Hamburger 10.00 2 MenuHambuger.jpg ");
+            bufferedWriter.newLine();
+ 
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 	
 }
