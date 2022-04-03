@@ -12,6 +12,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.fxml.*;
 import javafx.scene.layout.StackPane;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -62,6 +64,28 @@ public class Main extends Application{
     public static void main(String[] args) {
     	//System.out.println("no");
     	//can build the menu and customer/owner list here
+    	
+        //for (String a : arrOfStr)
+            
+		try {
+            FileReader reader = new FileReader("Accounts.txt");
+            BufferedReader bufferedReader = new BufferedReader(reader);
+ 
+            String line;
+ 
+            while ((line = bufferedReader.readLine()) != null) {
+                //System.out.println(line);
+            	String[] arrOfStr = line.split(" ", 3);//used for when reading from file
+                System.out.println(arrOfStr[0]);
+                System.out.println(arrOfStr[1]);
+                System.out.println(arrOfStr[2]);
+                
+            }
+            reader.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         launch(args);
         
     }

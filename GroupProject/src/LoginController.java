@@ -35,10 +35,10 @@ public class LoginController {
 	}
 
 	private void checkLogin() throws IOException {
-		System.out.println(username.getText().toString());
-		System.out.println(password.getText().toString());
 	    Main m = new Main();
-	    
+	    //needs to check against all names in system
+	    //check if empty first
+	    //if not empty run through an arraylist of user accounts
 	    if(username.getText().toString().equals("Brenden") && password.getText().toString().equals("123")) {
 	        wrongLogIn.setText("Success!");
 	        //System.out.print("out");
@@ -60,16 +60,4 @@ public class LoginController {
 	    m.changeScene("createAccount.fxml");
 	
 	}
-	
-	
-	/*private void menuBack(ActionEvent event) throws IOException {
-		Main m = new Main();
-		m.changeScene("sample.fxml");
-	}*/
-	
-	
-	
-	
-	
-	
 }

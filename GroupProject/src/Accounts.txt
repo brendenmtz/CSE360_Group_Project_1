@@ -1,2 +1,0 @@
-//username/password/card(name, number, ccv, experations date)/address(street town zip state)
-Hans/123/Hans 1212121 111 0224/707 S Forest Ave Tempe 85281 AZ
