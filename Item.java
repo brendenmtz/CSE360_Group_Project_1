@@ -52,6 +52,16 @@ public class Item {
         ingredients = ings;
     }
 
+    // Adds an ingredient to an Item's ingredient list
+    public void addIngredient(String ing){
+        ingredients.add(ing);
+    }
+
+    // Removes an ingredient from an Item's ingredient list
+    public void removeIngredient(String ing){
+        ingredients.remove(ing);
+    }
+
     // GETTERS
 
     // Displays Details of current Item in format:
