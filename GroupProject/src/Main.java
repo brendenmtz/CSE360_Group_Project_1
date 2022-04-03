@@ -43,7 +43,7 @@ public class Main extends Application{
 
         //root.getChildren().add(tabPane);
 
-        Scene scene = new Scene(root, 900, 400);
+        Scene scene = new Scene(root, 600, 400);
         stage.setTitle("Menu App");
         stage.setScene(scene);
         stage.show();

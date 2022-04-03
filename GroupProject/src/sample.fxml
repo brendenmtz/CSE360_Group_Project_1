@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: Hamburger.jpg;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane styleClass="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane prefHeight="409.0" prefWidth="605.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="409.0" prefWidth="605.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="409.0" fitWidth="605.0" opacity="0.9">
+               <image>
+                  <Image url="@Hamburger.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="170.0" layoutY="196.0" text="Username" textFill="WHITE" />
+            <Label layoutX="179.0" layoutY="99.0" text="Group 23 Restaurant" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="170.0" layoutY="231.0" text="Password" textFill="WHITE" />
+            <TextField layoutX="238.0" layoutY="192.0" />
+            <TextField layoutX="238.0" layoutY="227.0" />
+            <Button layoutX="287.0" layoutY="271.0" mnemonicParsing="false" text="Log In" />
+            <Button layoutX="264.0" layoutY="316.0" mnemonicParsing="false" text="Create Account" />
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>
