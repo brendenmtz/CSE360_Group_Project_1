@@ -23,7 +23,7 @@ public class Main extends Application{
 	public void start(Stage stage) throws Exception{
 		stg = stage;
 		stage.setResizable(false);
-		Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
 		
         //StackPane root = new StackPane();
 

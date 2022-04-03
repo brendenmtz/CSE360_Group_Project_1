@@ -22,3 +22,7 @@
 /Controller.class
 /menuController.class
 /MenuController.class
+/LoginController.class
+/login.fxml
+/CreateAccountController.class
+/createAccount.fxml

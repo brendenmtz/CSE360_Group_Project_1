@@ -11,14 +11,14 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 
-public class Controller {
+public class LoginController {
 
-	public Controller() {
+	public LoginController() {
 
 	}
 
 	@FXML
-	private Button button;
+	private Button userLogin;
 	@FXML
 	private Label wrongLogIn;
 	@FXML
@@ -55,6 +55,12 @@ public class Controller {
 	    }
 	}
 	
+	public void createAccountBtn(ActionEvent event) throws IOException {
+	    Main m = new Main();
+	    m.changeScene("createAccount.fxml");
+	
+	}
+	
 	
 	/*private void menuBack(ActionEvent event) throws IOException {
 		Main m = new Main();
@@ -67,20 +73,3 @@ public class Controller {
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
