@@ -5,18 +5,18 @@ import java.lang.*;
 
 public class Item {
     String name;
-    String description;
+    //String description;
     ArrayList<String> ingredients;
     double price;
     int makeTime;
     String imageName;
 
     // Proper Constructor of an Item, provides and sets all info.
-    public Item(String name, String des, ArrayList<String> ings, double price,
+    public Item(String name, /*String des,*/ ArrayList<String> ings, double price,
                 int makeTime, String img){
 
         this.name = name;
-        description = des;
+        //description = des;
         ingredients = ings;
         this.price = price;
         this.makeTime = makeTime;
@@ -24,6 +24,8 @@ public class Item {
     }
 
     // Base Constructor of an Item, price = -1 and no ingredients listed
+    //this is essentially menu
+    //probably dont need because of the list class
     public Item(){
         ingredients = new ArrayList<>();
         price = -1;
@@ -63,7 +65,7 @@ public class Item {
      */
     public void displayDetails(){
         System.out.println(name);
-        System.out.println(description);
+        //System.out.println(description);
         System.out.print("Ingredients: ");
         for(String ing : ingredients){
             System.out.print(ing);
@@ -79,9 +81,9 @@ public class Item {
         return name;
     }
 
-    public String getDescription(){
+    /*public String getDescription(){
         return description;
-    }
+    }*/
 
     public double getPrice(){
         return price;

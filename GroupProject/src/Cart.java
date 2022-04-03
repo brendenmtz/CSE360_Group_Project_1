@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 
 //this is the cart
-public class List {
+public class Cart {
     protected ArrayList<Item> items;
     protected double total;
 
     // List Constructor: Creates a new ArrayList of Item's and sets total = 0
-    public List(){
+    public Cart(){
         items = new ArrayList<>();
         total = 0;
     }

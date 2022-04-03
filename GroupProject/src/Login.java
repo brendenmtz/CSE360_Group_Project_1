@@ -1,7 +1,7 @@
 
 
 public class Login {
-
+	
     //The user that is logged into the app
     public User activeUser;
 
@@ -10,10 +10,10 @@ public class Login {
     private String password;
 
     //Creating a fake card
-    Card demoCard = new Card(username, 1212121, 111, 0224);
+    //Card demoCard = new Card(/*username, */1212121/*, 111, 0224*/);
 
     //Creating a fake address
-    Address address = new Address("707 S Forest Ave", "Tempe" , 85281, "AZ");
+    //Address address = new Address("707 S Forest Ave", "Tempe" , 85281, "AZ");
 
     //DEMO account user info
     private String demoUsername = "Hans";
@@ -22,6 +22,7 @@ public class Login {
     //DEMO account business info
     private String demoBusinessname = "Yum";
     private String demoBusinesspassword = "123";
+    private int demoCard = 1212121;
 
     //Methods
     //takes a username and password =and checks if the user exists
@@ -37,7 +38,7 @@ public class Login {
         if ((username == demoBusinessname)&&(password==demoBusinesspassword)) {
 
             //Setting active user to business demouser
-            activeUser = new Business(username, password, address);
+            activeUser = new Business(username, password/*, address*/);
             return 2;
         }
 
