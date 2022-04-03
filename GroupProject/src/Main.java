@@ -13,7 +13,9 @@ import javafx.fxml.*;
 import javafx.scene.layout.StackPane;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -66,7 +68,19 @@ public class Main extends Application{
     	//can build the menu and customer/owner list here
     	
         //for (String a : arrOfStr)
-            
+    	//uncomment to reset the users
+    	/*
+    	try {
+            FileWriter writer = new FileWriter("Accounts.txt", false);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write("Brenden 123 1000000000000000");
+            bufferedWriter.newLine();
+ 
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    	*/
 		try {
             FileReader reader = new FileReader("Accounts.txt");
             BufferedReader bufferedReader = new BufferedReader(reader);

@@ -70,9 +70,9 @@ public class CreateAccountController {
             	if(userInfo[0].compareTo(name) == 0) {
             		nameMatch = true;
             	}
-                System.out.println(userInfo[0]);
-                System.out.println(userInfo[1]);
-                System.out.println(userInfo[2]);
+                //System.out.println(userInfo[0]);
+                //System.out.println(userInfo[1]);
+                //System.out.println(userInfo[2]);
                 
             }
             reader.close();
@@ -124,10 +124,15 @@ public class CreateAccountController {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
 		    }*/
+		
 		try {
-            FileWriter writer = new FileWriter("Accounts.txt", false);
+            FileWriter writer = new FileWriter("Accounts.txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            bufferedWriter.write("Brenden 123 1000000000000000");
+            bufferedWriter.write(user);
+            bufferedWriter.write(" ");
+            bufferedWriter.write(password);
+            bufferedWriter.write(" ");
+            bufferedWriter.write(card);
             bufferedWriter.newLine();
  
             bufferedWriter.close();
