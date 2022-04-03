@@ -7,6 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -36,23 +38,45 @@ public class LoginController {
 
 	private void checkLogin() throws IOException {
 	    Main m = new Main();
+	    wrongLogIn.setText("");
+	    String name = username.getText().toString();
+	    String pass = password.getText().toString();
+	    if(username.getText().isEmpty() || password.getText().isEmpty()) {
+	        wrongLogIn.setText("Please enter your data.");
+	        return;
+	    }
 	    //needs to check against all names in system
 	    //check if empty first
 	    //if not empty run through an arraylist of user accounts
-	    if(username.getText().toString().equals("Brenden") && password.getText().toString().equals("123")) {
-	        wrongLogIn.setText("Success!");
-	        //System.out.print("out");
-	        m.changeScene("menu.fxml");
+	    boolean validLogin = false;
+	    try {
+            FileReader reader = new FileReader("Accounts.txt");
+            BufferedReader bufferedReader = new BufferedReader(reader);
+ 
+            String line;
+ 
+            while (((line = bufferedReader.readLine()) != null) && !validLogin) {
+                //System.out.println(line);
+            	String[] userInfo = line.split(" ", 3);//used for when reading from file
+            	if(userInfo[0].compareTo(name) == 0) {
+            		if(userInfo[1].compareTo(pass) == 0) {
+            			validLogin = true;
+            		}
+            	}
+                
+            }
+            reader.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	    if(validLogin) {
+	    	m.changeScene("menu.fxml");
+	    }else {
+	    	wrongLogIn.setText("Wrong username or password!");
+	    	return;
 	    }
-	
-	    else if(username.getText().isEmpty() && password.getText().isEmpty()) {
-	        wrongLogIn.setText("Please enter your data.");
-	    }
-	
-	
-	    else {
-	        wrongLogIn.setText("Wrong username or password!");
-	    }
+
 	}
 	
 	public void createAccountBtn(ActionEvent event) throws IOException {
