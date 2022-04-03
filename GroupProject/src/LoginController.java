@@ -49,6 +49,7 @@ public class LoginController {
 	    //check if empty first
 	    //if not empty run through an arraylist of user accounts
 	    boolean validLogin = false;
+	    boolean customerLogin = true;
 	    try {
             FileReader reader = new FileReader("Accounts.txt");
             BufferedReader bufferedReader = new BufferedReader(reader);
@@ -57,12 +58,20 @@ public class LoginController {
  
             while (((line = bufferedReader.readLine()) != null) && !validLogin) {
                 //System.out.println(line);
-            	String[] userInfo = line.split(" ", 3);//used for when reading from file
+            	String[] userInfo = line.split(" ", 4);//used for when reading from file
+            	//System.out.println("Before Name");
             	if(userInfo[0].compareTo(name) == 0) {
+            		//System.out.println("Before pass");
             		if(userInfo[1].compareTo(pass) == 0) {
+            			//System.out.println("Before owner");
             			validLogin = true;
+            			if(userInfo[3].compareTo("Owner") == 0) {
+            				//System.out.println("In owner");
+            				customerLogin = false;
+            			}
             		}
             	}
+            	//System.out.println("After owner");
                 
             }
             reader.close();
@@ -70,7 +79,12 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-	    if(validLogin) {
+	    //System.out.println("Before checks");
+	    if(validLogin && customerLogin) {
+	    	//System.out.println("Going to menu");
+	    	m.changeScene("menu.fxml");
+	    }else if(validLogin && !customerLogin){
+	    	System.out.println("Owner");
 	    	m.changeScene("menu.fxml");
 	    }else {
 	    	wrongLogIn.setText("Wrong username or password!");

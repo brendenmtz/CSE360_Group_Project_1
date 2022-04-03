@@ -69,11 +69,17 @@ public class Main extends Application{
     	
         //for (String a : arrOfStr)
     	//uncomment to reset the users
+    	/*String test = "Brenden 123 1000000000000000 Owner";
+    	String[] arrOfStr = test.split(" ", 4);//used for when reading from file
+        System.out.println(arrOfStr[0]);
+        System.out.println(arrOfStr[1]);
+        System.out.println(arrOfStr[2]);
+        System.out.println(arrOfStr[3]);*/
     	/*
     	try {
             FileWriter writer = new FileWriter("Accounts.txt", false);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            bufferedWriter.write("Brenden 123 1000000000000000");
+            bufferedWriter.write("Brenden 123 1000000000000000 Owner");
             bufferedWriter.newLine();
  
             bufferedWriter.close();
@@ -89,10 +95,11 @@ public class Main extends Application{
  
             while ((line = bufferedReader.readLine()) != null) {
                 //System.out.println(line);
-            	String[] arrOfStr = line.split(" ", 3);//used for when reading from file
+            	String[] arrOfStr = line.split(" ", 4);//used for when reading from file
                 System.out.println(arrOfStr[0]);
                 System.out.println(arrOfStr[1]);
                 System.out.println(arrOfStr[2]);
+                System.out.println(arrOfStr[3]);
                 
             }
             reader.close();

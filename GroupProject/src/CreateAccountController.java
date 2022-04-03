@@ -133,6 +133,7 @@ public class CreateAccountController {
             bufferedWriter.write(password);
             bufferedWriter.write(" ");
             bufferedWriter.write(card);
+            bufferedWriter.write(" Customer");
             bufferedWriter.newLine();
  
             bufferedWriter.close();
@@ -147,10 +148,11 @@ public class CreateAccountController {
  
             while ((line = bufferedReader.readLine()) != null) {
                 //System.out.println(line);
-            	String[] arrOfStr = line.split(" ", 3);//used for when reading from file
+            	String[] arrOfStr = line.split(" ", 4);//used for when reading from file
                 System.out.println(arrOfStr[0]);
                 System.out.println(arrOfStr[1]);
                 System.out.println(arrOfStr[2]);
+                System.out.println(arrOfStr[3]);
                 
             }
             reader.close();
