@@ -1,4 +1,10 @@
+<<<<<<< HEAD:GroupProject/src/Item.java
 //import groovy.lang.GString;
+=======
+package GroupProject.src;
+
+import groovy.lang.GString;
+>>>>>>> main:Item.java
 
 import java.util.*;
 //import java.lang.*;
@@ -11,8 +17,13 @@ public class Item {
     int makeTime;
     String imageName;
 
+<<<<<<< HEAD:GroupProject/src/Item.java
     // Proper Constructor of an Item, provides and sets all info.
     public Item(String name, /*String des,*/ ArrayList<String> ings, double price,
+=======
+    // Proper Constructor of an GroupProject.src.Item, provides and sets all info.
+    public Item(String name, String des, ArrayList<String> ings, double price,
+>>>>>>> main:Item.java
                 int makeTime, String img){
 
         this.name = name;
@@ -23,24 +34,36 @@ public class Item {
         imageName = img;
     }
 
+<<<<<<< HEAD:GroupProject/src/Item.java
     // Base Constructor of an Item, price = -1 and no ingredients listed
     //this is essentially menu
     //probably dont need because of the list class
+=======
+    // Constructor of an GroupProject.src.Item. Sets the name to a given name and sets integer values to -1
+    public Item(String name){
+        this.name = name;
+        ingredients = new ArrayList<>();
+        price = -1;
+        makeTime = -1;
+    }
+
+    // Base Constructor of an GroupProject.src.Item, price = -1 and no ingredients listed
+>>>>>>> main:Item.java
     public Item(){
         ingredients = new ArrayList<>();
         price = -1;
-        makeTime = 0;
-        System.out.println("Empty Item Created.");
+        makeTime = -1;
+        System.out.println("Empty GroupProject.src.Item Created.");
     }
 
     // SETTERS
 
-    // Sets name of Item
+    // Sets name of GroupProject.src.Item
     public void changeName(String newName){
         name = newName;
     }
 
-    // Sets price of an Item
+    // Sets price of an GroupProject.src.Item
     public void changePrice(double price){
         this.price = price;
     }
@@ -49,14 +72,24 @@ public class Item {
         this.makeTime = makeTime;
     }
 
-    // Sets ingredients of an Item
+    // Sets ingredients of an GroupProject.src.Item
     public void setIngredients(ArrayList<String> ings){
         ingredients = ings;
     }
 
+    // Adds an ingredient to an GroupProject.src.Item's ingredient list
+    public void addIngredient(String ing){
+        ingredients.add(ing);
+    }
+
+    // Removes an ingredient from an GroupProject.src.Item's ingredient list
+    public void removeIngredient(String ing){
+        ingredients.remove(ing);
+    }
+
     // GETTERS
 
-    // Displays Details of current Item in format:
+    // Displays Details of current GroupProject.src.Item in format:
     /*
     Name
     Description
@@ -95,6 +128,23 @@ public class Item {
 
     public String getImage(){
         return imageName;
+    }
+
+    // Checks if the item has appropriate values. Returns true if the item is complete, false if otherwise
+    public boolean checkItem(){
+        if(name.equals(""))
+            return false;
+        if (description.equals(""))
+            return false;
+        if(ingredients.isEmpty())
+            return false;
+        if(price == -1)
+            return false;
+        if(makeTime == -1)
+            return false;
+
+        // Returns false if imageName is an empty string, true if it is not
+        return !imageName.equals("");
     }
 }
 

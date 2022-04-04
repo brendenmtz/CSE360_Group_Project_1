@@ -1,3 +1,7 @@
+package GroupProject.src;
+
+import GroupProject.src.Order;
+
 import java.util.ArrayList;
 
 public class Queue {
@@ -5,7 +9,7 @@ public class Queue {
     int currentNumber;
     ArrayList<Order> orders;
 
-    // Basic Constructor of Queue
+    // Basic Constructor of GroupProject.src.Queue
     public Queue(){
         inLine = 0;
         orders = new ArrayList<>();
@@ -32,7 +36,7 @@ public class Queue {
 
     // Prints that an order is ready
     public void callOrder(Order order){
-        System.out.println("Order for " + order.getName() + " is ready.");
+        System.out.println("GroupProject.src.Order for " + order.getName() + " is ready.");
     }
 
     // Displays the wait time of an order
