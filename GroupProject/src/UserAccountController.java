@@ -34,6 +34,7 @@ public class UserAccountController extends Information{
 		pane = loader.load();
 		MenuController controller = loader.getController();
 		controller.changeScene(pane, user, menu, orderList, "userAccount");
+		controller.addCircle();
 	}
 	
 }

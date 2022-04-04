@@ -117,11 +117,11 @@ public class Main extends Application{
             	u.imageName = arrOfStr[3];
             	u.ingredients = new ArrayList<>();
             	System.out.println(arrOfStr.length);
-            	for(int i = 4; i < arrOfStr.length; i++) {
+            	for(int i = 4; i < arrOfStr.length; i++) {//this is the ingrediant arraylist stuff
             		System.out.println(arrOfStr[i]);
             		u.ingredients.add(arrOfStr[i]);
             	}
-            	menu.add(u);
+            	menu.add(u);//adds item to the menu
             	System.out.println();
             }
             reader.close();
@@ -149,6 +149,7 @@ public class Main extends Application{
             FileWriter writer = new FileWriter("Accounts.txt", false);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write("Brenden 123 1000000000000000 Owner");
+            bufferedWriter.write("Aaron 1234 1000000000000001 Customer");
             bufferedWriter.newLine();
  
             bufferedWriter.close();
@@ -177,7 +178,7 @@ public class Main extends Application{
 
     	    }*/
     	try {
-            FileWriter writer = new FileWriter("Menu.txt", false);
+            FileWriter writer = new FileWriter("Menu.txt", false);//when false clears the file
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write("Hamburger 10.00 2 MenuHambuger.jpg Patty Buns Cheese");
             bufferedWriter.newLine();

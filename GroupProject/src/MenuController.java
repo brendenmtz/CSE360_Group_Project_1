@@ -62,7 +62,7 @@ public class MenuController extends Information{
 				
 			}*/
 			//theMenu.add(img, i-j*4, j);
-			String url = "/" + menu.get(i).imageName;
+			//String url = "/" + menu.get(i).imageName;
 			//final Image selectedImage = new ImageView(MenuController.getClass().getResourceAsStream(menu.get(i).imageName)).getImage();
 			Image img = new Image("Hamburger.jpg");
 			ImageView img2 = new ImageView(img);

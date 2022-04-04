@@ -57,6 +57,7 @@ public class OwnerAccountController extends Information{
 		MenuController controller = loader.getController();
 		controller.changeScene(pane, user, menu, orderList, "owner");
 		controller.accountVis();
+		controller.addCircle();
 	}
 	
 	public void addItem(ActionEvent event) {
