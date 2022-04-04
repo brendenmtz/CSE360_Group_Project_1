@@ -184,6 +184,8 @@ public class Main extends Application{
             bufferedWriter.newLine();
             bufferedWriter.write("Pancakes 9.00 1 Pancakes.jpg Mix Syrup Water");
             bufferedWriter.newLine();
+            bufferedWriter.write("FrenchFry 5.00 3 FrenchFry.jpg Oil Potatoes");
+            bufferedWriter.newLine();
  
             bufferedWriter.close();
         } catch (IOException e) {

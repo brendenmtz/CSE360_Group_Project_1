@@ -51,7 +51,7 @@ public class MenuController extends Information{
 		
 		for(int i = 0; i < menu.size(); i++) {//goes through each position
 			//int smallIdx = i;
-			for(int j = i; j < menu.size()-1; j++) {
+			for(int j = 0; j < menu.size()-1; j++) {
 				String price1 = menu.get(idx[j]).name;
 				String price2 = menu.get(idx[j+1]).name;
 				if(price2.compareTo(price1) < 0) {
@@ -101,7 +101,7 @@ public class MenuController extends Information{
 		
 		for(int i = 0; i < menu.size(); i++) {//goes through each position
 			//int smallIdx = i;
-			for(int j = i; j < menu.size()-1; j++) {
+			for(int j = 0; j < menu.size()-1; j++) {
 				double price1 = menu.get(idx[j]).price;
 				double price2 = menu.get(idx[j+1]).price;
 				if(price2 < price1) {
@@ -109,6 +109,7 @@ public class MenuController extends Information{
 					idx[j] = idx[j+1];
 					idx[j+1] = temp;
 				}
+				
 				
 			}
 			

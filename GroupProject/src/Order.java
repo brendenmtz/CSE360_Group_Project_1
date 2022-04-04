@@ -9,7 +9,7 @@ public class Order {
     protected String name;
     protected int number;
     protected List cart;
-    protected Card paymentMethod;
+    protected int paymentMethod;
 
     // Basic Constructor of an Order.
     public Order(){
@@ -18,7 +18,7 @@ public class Order {
     }
 
     // Proper Constructor of an Order. Includes all necessary information.
-    public Order(String name, int number, Card card){
+    public Order(String name, int number, int card){
         this.name = name;
         this.number = number;
         cart = new List();
@@ -28,7 +28,7 @@ public class Order {
     // SETTERS
 
     // Changes payment method of an order to a new Card object
-    public void changePaymentMethod(Card card){
+    public void changePaymentMethod(int card){
         paymentMethod = card;
     }
 
