@@ -1,4 +1,4 @@
-package GroupProject.src;
+//package GroupProject.src;
 
 public class Customer extends User {
 

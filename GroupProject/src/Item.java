@@ -1,10 +1,4 @@
-<<<<<<< HEAD:GroupProject/src/Item.java
-//import groovy.lang.GString;
-=======
-package GroupProject.src;
 
-import groovy.lang.GString;
->>>>>>> main:Item.java
 
 import java.util.*;
 //import java.lang.*;
@@ -16,15 +10,7 @@ public class Item {
     double price;
     int makeTime;
     String imageName;
-
-<<<<<<< HEAD:GroupProject/src/Item.java
-    // Proper Constructor of an Item, provides and sets all info.
-    public Item(String name, /*String des,*/ ArrayList<String> ings, double price,
-=======
-    // Proper Constructor of an GroupProject.src.Item, provides and sets all info.
-    public Item(String name, String des, ArrayList<String> ings, double price,
->>>>>>> main:Item.java
-                int makeTime, String img){
+    public Item(String name, /*String des,*/ ArrayList<String> ings, double price, int makeTime, String img){
 
         this.name = name;
         //description = des;
@@ -34,11 +20,11 @@ public class Item {
         imageName = img;
     }
 
-<<<<<<< HEAD:GroupProject/src/Item.java
+//<<<<<<< HEAD:GroupProject/src/Item.java
     // Base Constructor of an Item, price = -1 and no ingredients listed
     //this is essentially menu
     //probably dont need because of the list class
-=======
+//=======
     // Constructor of an GroupProject.src.Item. Sets the name to a given name and sets integer values to -1
     public Item(String name){
         this.name = name;
@@ -48,7 +34,7 @@ public class Item {
     }
 
     // Base Constructor of an GroupProject.src.Item, price = -1 and no ingredients listed
->>>>>>> main:Item.java
+//>>>>>>> main:Item.java
     public Item(){
         ingredients = new ArrayList<>();
         price = -1;
@@ -134,8 +120,8 @@ public class Item {
     public boolean checkItem(){
         if(name.equals(""))
             return false;
-        if (description.equals(""))
-            return false;
+        //if (description.equals(""))
+            //return false;
         if(ingredients.isEmpty())
             return false;
         if(price == -1)

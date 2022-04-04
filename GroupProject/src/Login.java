@@ -1,4 +1,4 @@
-<<<<<<< HEAD:GroupProject/src/Login.java
+//<<<<<<< HEAD:GroupProject/src/Login.java
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -10,9 +10,9 @@ import javafx.fxml.*;
 import javafx.scene.layout.StackPane;
 import java.util.ArrayList;
 
-=======
-package GroupProject.src;
->>>>>>> main:Login.java
+//=======
+//package GroupProject.src;
+//>>>>>>> main:Login.java
 
 public class Login {
 	

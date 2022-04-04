@@ -1,4 +1,4 @@
-package GroupProject.src;
+//package GroupProject.src;
 
 public class User {
     public String username;

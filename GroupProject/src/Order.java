@@ -1,4 +1,4 @@
-package GroupProject.src;
+//package GroupProject.src;
 
 import java.text.DecimalFormat;
 
@@ -19,13 +19,7 @@ public class Order {
         cart = new List();
     }
 
-<<<<<<< HEAD:GroupProject/src/Order.java
-    // Proper Constructor of an Order. Includes all necessary information.
     public Order(String name, int number, int card){
-=======
-    // Proper Constructor of an GroupProject.src.Order. Includes all necessary information.
-    public Order(String name, int number, Card card){
->>>>>>> main:Order.java
         this.name = name;
         this.number = number;
         cart = new List();
@@ -34,13 +28,8 @@ public class Order {
 
     // SETTERS
 
-<<<<<<< HEAD:GroupProject/src/Order.java
-    // Changes payment method of an order to a new Card object
+
     public void changePaymentMethod(int card){
-=======
-    // Changes payment method of an order to a new GroupProject.src.Card object
-    public void changePaymentMethod(Card card){
->>>>>>> main:Order.java
         paymentMethod = card;
     }
 
