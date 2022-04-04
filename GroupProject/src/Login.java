@@ -48,7 +48,7 @@ public class Login {
         if ((username == demoBusinessname)&&(password==demoBusinesspassword)) {
 
             //Setting active user to business demouser
-            activeUser = new Business(username, password/*, address*/);
+            //activeUser = new Business(username, password/*, address*/);
             return 2;
         }
 
