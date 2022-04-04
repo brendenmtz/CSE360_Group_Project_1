@@ -1,10 +1,12 @@
+package GroupProject.src;
+
 public class Address {
     public String street;
     private String town;
     private int zip;
     private String state;
 
-    //Constructor for Address
+    //Constructor for GroupProject.src.Address
     public Address(String street, String town, int zip, String state) {
         this.street = street;
         this.town = town;

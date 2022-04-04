@@ -1,4 +1,4 @@
-import java.util.*;
+package GroupProject.src;
 
 public class Customer extends User {
 
