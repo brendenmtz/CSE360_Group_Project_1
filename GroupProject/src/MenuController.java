@@ -147,19 +147,6 @@ public class MenuController extends Information{
 	public void addCircle() {
 		ingred = new Button[menu.size()];
 		price = new Button[menu.size()];
-		//System.out.println(theMenu.getRowConstraints());
-		//System.out.println(theMenu.getColumnConstraints());
-		//System.out.println("Going though the menu");
-		/*for(int i = 0; i < menu.size(); i++) {
-			System.out.println(menu.get(i).name);
-			System.out.println(menu.get(i).price);
-			System.out.println(menu.get(i).makeTime);
-			System.out.println(menu.get(i).imageName);
-			System.out.println(menu.get(i).ingredients.size());
-			for(int j = 0; j < menu.get(i).ingredients.size(); j++) {
-				System.out.println(menu.get(i).ingredients.get(j));
-			}
-		}*/
 		int j = 0;
 		for(int i = 0; i < menu.size(); i++) {
 			if((i % 4 == 0) && (i > 0)) {
@@ -172,13 +159,7 @@ public class MenuController extends Information{
 			ingred[i] = b2;
 			price[i].setOnAction(new ButtonHandler());
 			ingred[i].setOnAction(new ButtonHandler());
-			/*if(i > theMenu.getWidth()) {
-				
-			}*/
-			//theMenu.add(img, i-j*4, j);
-			//String url = "/" + menu.get(i).imageName;
-			//final Image selectedImage = new ImageView(MenuController.getClass().getResourceAsStream(menu.get(i).imageName)).getImage();
-			Image img = new Image("Hamburger.jpg");
+			Image img = new Image(menu.get(i).imageName);
 			ImageView img2 = new ImageView(img);
 			img2.setFitWidth(100);
 			img2.setFitHeight(100);
