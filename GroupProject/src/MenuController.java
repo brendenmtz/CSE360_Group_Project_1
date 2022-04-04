@@ -159,6 +159,7 @@ public class MenuController extends Information{
 			ingred[i] = b2;
 			price[i].setOnAction(new ButtonHandler());
 			ingred[i].setOnAction(new ButtonHandler());
+			System.out.println(menu.get(i).imageName);
 			Image img = new Image(menu.get(i).imageName);
 			ImageView img2 = new ImageView(img);
 			img2.setFitWidth(100);

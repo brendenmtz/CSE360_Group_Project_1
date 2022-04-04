@@ -180,7 +180,7 @@ public class Main extends Application{
     	try {
             FileWriter writer = new FileWriter("Menu.txt", false);//when false clears the file
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            bufferedWriter.write("Hamburger 10.00 2 MenuHambuger.jpg Patty Buns Cheese");
+            bufferedWriter.write("Hamburger 10.00 2 Hamburger.jpg Patty Buns Cheese");
             bufferedWriter.newLine();
             bufferedWriter.write("Pancakes 9.00 1 Pancakes.jpg Mix Syrup Water");
             bufferedWriter.newLine();
