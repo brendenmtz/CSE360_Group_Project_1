@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -38,9 +40,10 @@ public class OwnerAccountController extends Information{
 	private TextField makeTime;
 	@FXML
 	private TextField imageURL;
+	private boolean removing;
 	public OwnerAccountController() {
 		System.out.println("here 4");
-		
+		removing = false;
 	}
 	
 	
@@ -52,6 +55,7 @@ public class OwnerAccountController extends Information{
 	}
 	
 	public void menuBtn(ActionEvent event) throws IOException {
+		System.out.println("here 24");
 		loader.setLocation(getClass().getResource("menu.fxml"));
 		pane = loader.load();
 		MenuController controller = loader.getController();
@@ -85,17 +89,29 @@ public class OwnerAccountController extends Information{
 	}
 	
 	public void removeItem(ActionEvent event){
-		for(int i = 0; i < menu.size(); i++) {
-			
-			//menu.remove(i);
-		}
+		makeTimeLabel.setVisible(false);
+		imageUrlLabel.setVisible(false);
+		makeTime.setVisible(false);
+		imageURL.setVisible(false);
+		itemIngredients.setVisible(false);
+		itemPrice.setVisible(false);
+		itemName.setVisible(true);
+		itemIngredientsLabel.setVisible(false);
+		itemPriceLabel.setVisible(false);
+		itemNameLabel.setVisible(true);
+		submit.setVisible(true);
+		removeItem.setVisible(false);
+		addItem.setVisible(false);
+		menuBtn.setVisible(false);
+		removing = true;
 		
 	}
 	
 	public void submitBtn(ActionEvent event) {
-		
-		if(makeTime.getText().isEmpty() || imageURL.getText().isEmpty() || itemIngredients.getText().isEmpty() 
-				|| itemPrice.getText().isEmpty() || itemName.getText().isEmpty()) {
+		System.out.println(!makeTime.getText().isEmpty());
+		if(!makeTime.getText().isEmpty() && !imageURL.getText().isEmpty() && !itemIngredients.getText().isEmpty() 
+				&& !itemPrice.getText().isEmpty() && !itemName.getText().isEmpty()) {
+			System.out.println("Enter the if");
 			makeTimeLabel.setVisible(false);
 			imageUrlLabel.setVisible(false);
 			makeTime.setVisible(false);
@@ -123,8 +139,87 @@ public class OwnerAccountController extends Information{
 				ingred.add(userInfo[i]);
 			}
 			item.ingredients = ingred;
+			menu.add(item);
+			//write to menu.txt
+			writeToMenu(item, true);
+				
 		}
+		if(!itemName.getText().isEmpty() && removing) {
+			makeTimeLabel.setVisible(false);
+			imageUrlLabel.setVisible(false);
+			makeTime.setVisible(false);
+			imageURL.setVisible(false);
+			itemIngredients.setVisible(false);
+			itemPrice.setVisible(false);
+			itemName.setVisible(false);
+			itemIngredientsLabel.setVisible(false);
+			itemPriceLabel.setVisible(false);
+			itemNameLabel.setVisible(false);
+			submit.setVisible(false);
+			removeItem.setVisible(true);
+			addItem.setVisible(true);
+			menuBtn.setVisible(true);
+			System.out.println("Enter the other if");
+			removing = false;
+			String rvmItm = itemName.getText().toString();
+			System.out.println(itemName.getText().toString());
+			for(int i = 0; i < menu.size(); i++) {
+				if(rvmItm.compareTo(menu.get(i).name) == 0) {
+					menu.remove(i);
+					System.out.println(i);
+					reWriteMenu();
+				}
+			}
+			
+		}
+		//writeToMenu()
 		
+		
+	}
+	
+	public void writeToMenu(Item item, boolean add) {
+		System.out.println("Adding Item");
+		try {
+            FileWriter writer = new FileWriter("Menu.txt", add);//when false clears the file
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            String itm = item.name + " " + item.price + " " + item.makeTime + " " + item.imageName;
+            for(int i = 0; i < item.ingredients.size(); i++) {
+            	itm = itm + " " + item.ingredients.get(i);
+            }
+            bufferedWriter.write(itm);
+            bufferedWriter.newLine();
+ 
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	public void reWriteMenu() {
+		System.out.println("Rewriting Item");
+		try {
+            FileWriter writer = new FileWriter("Menu.txt", false);//when false clears the file
+            System.out.println("file clear");
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            System.out.println("file clear");
+            //String itm = item.name + " " + item.price + " " + item.makeTime + " " + item.imageName;
+            //for(int i = 0; i < item.ingredients.size(); i++) {
+            	//itm = item + " " + item.ingredients.get(i);
+            //}
+            for(int i = 0; i < menu.size(); i++) {
+            	Item item = menu.get(i);
+            	String itm = item.name + " " + item.price + " " + item.makeTime + " " + item.imageName;
+                for(int j = 0; j < item.ingredients.size(); j++) {
+                	itm = itm + " " + item.ingredients.get(j);
+                }
+                bufferedWriter.write(itm);
+                bufferedWriter.newLine();
+            }
+            
+ 
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	
 }

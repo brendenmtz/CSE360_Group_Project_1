@@ -33,7 +33,7 @@ public class Main extends Application{
 	ArrayList<Order> orderList;
 	public void start(Stage stage) throws Exception{
 		stg = stage;
-		//createMenu();
+		createMenu();
 		menu = getMenu();
 		for(int i = 0; i < menu.size(); i++) {
 			System.out.println(menu.get(i).name);
@@ -181,6 +181,8 @@ public class Main extends Application{
             FileWriter writer = new FileWriter("Menu.txt", false);//when false clears the file
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write("Hamburger 10.00 2 MenuHambuger.jpg Patty Buns Cheese");
+            bufferedWriter.newLine();
+            bufferedWriter.write("Pancakes 9.00 1 Pancakes.jpg Mix Syrup Water");
             bufferedWriter.newLine();
  
             bufferedWriter.close();

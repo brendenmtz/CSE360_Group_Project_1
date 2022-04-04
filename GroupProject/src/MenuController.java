@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,12 +30,115 @@ public class MenuController extends Information{
 	private Button menuBack;
 	@FXML
 	private GridPane theMenu;
+	@FXML 
+	private Button cartBtn;
 	public MenuController() {
 		//Circle c = new Circle(4, Color.WHITE);
 		//theMenu.add(c, 0, 0);
 	}
 	
-	
+	public void aplphaSort() throws IOException {
+		System.out.println("alpha");
+		double[] price = new double[menu.size()];
+		int[] idx = new int[menu.size()];
+		for(int i = 0; i < menu.size(); i++) {
+			price[i] = menu.get(i).price;
+			idx[i] = i;
+		}
+		for(int i = 0; i < menu.size(); i++) {
+			System.out.println(idx[i]);
+		}
+		
+		for(int i = 0; i < menu.size(); i++) {//goes through each position
+			//int smallIdx = i;
+			for(int j = i; j < menu.size()-1; j++) {
+				String price1 = menu.get(idx[j]).name;
+				String price2 = menu.get(idx[j+1]).name;
+				if(price2.compareTo(price1) < 0) {
+					int temp = idx[j];
+					idx[j] = idx[j+1];
+					idx[j+1] = temp;
+				}
+				
+			}
+			
+			
+			
+		}
+		ArrayList<Item> newMenu = new ArrayList<>();
+		for(int i = 0; i < menu.size(); i++) {
+			System.out.println(idx[i]);
+			System.out.println(menu.get(idx[i]).name);
+			newMenu.add(menu.get(idx[i]));
+			
+		}
+		//menu = newMenu;
+		menu = newMenu;
+		for(int i = 0; i < menu.size(); i++) {//goes through each position
+			System.out.println(menu.get(i).name);
+			
+		}
+		System.out.println();
+		loader.setLocation(getClass().getResource("menu.fxml"));
+		pane = loader.load();
+		MenuController controller = loader.getController();
+		controller.changeScene(pane, user, menu, orderList, "customer");
+		controller.accountVis();
+		controller.addCircle();
+	}
+	public void priceSort() throws IOException {
+		System.out.println();
+		System.out.println("price");
+		double[] price = new double[menu.size()];
+		int[] idx = new int[menu.size()];
+		for(int i = 0; i < menu.size(); i++) {
+			price[i] = menu.get(i).price;
+			idx[i] = i;
+		}
+		for(int i = 0; i < menu.size(); i++) {
+			System.out.println(idx[i]);
+		}
+		
+		for(int i = 0; i < menu.size(); i++) {//goes through each position
+			//int smallIdx = i;
+			for(int j = i; j < menu.size()-1; j++) {
+				double price1 = menu.get(idx[j]).price;
+				double price2 = menu.get(idx[j+1]).price;
+				if(price2 < price1) {
+					int temp = idx[j];
+					idx[j] = idx[j+1];
+					idx[j+1] = temp;
+				}
+				
+			}
+			
+			
+			
+		}
+		ArrayList<Item> newMenu = new ArrayList<>();
+		for(int i = 0; i < menu.size(); i++) {
+			System.out.println(idx[i]);
+			System.out.println(menu.get(idx[i]).name);
+			newMenu.add(menu.get(idx[i]));
+			
+		}
+		//menu = newMenu;
+		menu = newMenu;
+		for(int i = 0; i < menu.size(); i++) {//goes through each position
+			System.out.println(menu.get(i).name);
+			
+		}
+		System.out.println();
+		loader.setLocation(getClass().getResource("menu.fxml"));
+		pane = loader.load();
+		MenuController controller = loader.getController();
+		controller.changeScene(pane, user, menu, orderList, "customer");
+		controller.accountVis();
+		controller.addCircle();
+	}
+	public void cartBtn() {
+		
+	}
 	public void addCircle() {
 		
 		//System.out.println(theMenu.getRowConstraints());
