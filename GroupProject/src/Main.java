@@ -31,8 +31,11 @@ public class Main extends Application{
 	User user;
 	ArrayList<Item> menu;
 	ArrayList<Order> orderList;
+	Queue queue;
 	public void start(Stage stage) throws Exception{
 		stg = stage;
+		//queue = createQueue();
+		
 		createMenu();
 		menu = getMenu();
 		for(int i = 0; i < menu.size(); i++) {
@@ -157,10 +160,7 @@ public class Main extends Application{
             e.printStackTrace();
         }
     	*/
-    	
-		
         launch(args);
-        
     }
     
     public void createMenu() {

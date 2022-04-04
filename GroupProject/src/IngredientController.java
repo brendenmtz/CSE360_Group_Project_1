@@ -34,16 +34,18 @@ public class IngredientController extends Information {
 		controller.addCircle();
 	}
 	
-	public void setData(String itemName, String imgUrl, String itemPrice, ArrayList<String> ingredients) {
+	public void setData(String itemName, String imgUrl, String itemPrice, ArrayList<String> ingredientsList) {
 		Image temp = new Image(imgUrl);
 		img.setImage(temp);
 		//img = new ImageView(temp);
 		name.setText(itemName);
 		price.setText(itemPrice);
 		String ingred = "";
-		for(int i = 0; i < ingredients.size(); i++) {
-			ingred = ingred + " " + ingredients.get(i); 
+		for(int i = 0; i < ingredientsList.size(); i++) {
+			ingred = ingred + " " + ingredientsList.get(i); 
 		}
+		ingredients.setText(ingred);
 	}
+	
 
 }

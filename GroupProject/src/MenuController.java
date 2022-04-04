@@ -159,7 +159,7 @@ public class MenuController extends Information{
 			ingred[i] = b2;
 			price[i].setOnAction(new ButtonHandler());
 			ingred[i].setOnAction(new ButtonHandler());
-			System.out.println(menu.get(i).imageName);
+			//System.out.println();
 			Image img = new Image(menu.get(i).imageName);
 			ImageView img2 = new ImageView(img);
 			img2.setFitWidth(100);
@@ -230,28 +230,24 @@ public class MenuController extends Information{
 	private class ButtonHandler implements EventHandler<ActionEvent> {
 
 		@Override
-		public void handle(ActionEvent event) {
+		public void handle(ActionEvent event){
 			System.out.println("action detecected");
 			// TODO Auto-generated method stub
 			for(int i = 0; i < ingred.length; i++) {
 				if(event.getSource() == ingred[i]) {
 					System.out.println("ingredients clicked");
 					System.out.println(menu.get(i).name);
-					loader.setLocation(getClass().getResource("ingredients.fxml"));
 					try {
+						loader.setLocation(getClass().getResource("ingredients.fxml"));
 						pane = loader.load();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					IngredientController controller = loader.getController();
-					try {
-						
+						IngredientController controller = loader.getController();
 						controller.changeScene(pane, user, menu, orderList, previous);
+						controller.setData(menu.get(i).name, menu.get(i).imageName, "" + menu.get(i).price, menu.get(i).ingredients);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
 				}
 			}
 			for(int i = 0; i < price.length; i++) {

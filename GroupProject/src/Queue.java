@@ -12,6 +12,7 @@ public class Queue {
     // Basic Constructor of GroupProject.src.Queue
     public Queue(){
         //inLine = 0;
+    	currentNumber = 0;
         orders = new ArrayList<>();
     }
 
