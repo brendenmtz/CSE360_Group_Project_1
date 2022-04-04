@@ -33,7 +33,18 @@ public class Main extends Application{
 	ArrayList<Order> orderList;
 	public void start(Stage stage) throws Exception{
 		stg = stage;
-		createMenu();
+		//createMenu();
+		menu = getMenu();
+		for(int i = 0; i < menu.size(); i++) {
+			System.out.println(menu.get(i).name);
+			System.out.println(menu.get(i).price);
+			System.out.println(menu.get(i).makeTime);
+			System.out.println(menu.get(i).imageName);
+			System.out.println(menu.get(i).ingredients.size());
+			for(int j = 0; j < menu.get(i).ingredients.size(); j++) {
+				System.out.println(menu.get(i).ingredients.get(j));
+			}
+		}
 		userList = getUserList();
 		for(int i = 0; i < userList.size(); i++) {
 			System.out.println(userList.get(i).username);
@@ -88,6 +99,38 @@ public class Main extends Application{
         }
 		return users;
 	}
+	public ArrayList<Item> getMenu() {
+		ArrayList<Item> menu = new ArrayList<>();
+		try {
+            FileReader reader = new FileReader("Menu.txt");
+            BufferedReader bufferedReader = new BufferedReader(reader);
+ 
+            String line;
+ 
+            while ((line = bufferedReader.readLine()) != null) {
+                //System.out.println(line);
+            	String[] arrOfStr = line.split(" ", 40);//used for when reading from file
+            	Item u = new Item();
+            	u.name = arrOfStr[0];
+            	u.price = Double.parseDouble(arrOfStr[1]);
+            	u.makeTime = Integer.parseInt(arrOfStr[2]);
+            	u.imageName = arrOfStr[3];
+            	u.ingredients = new ArrayList<>();
+            	System.out.println(arrOfStr.length);
+            	for(int i = 4; i < arrOfStr.length; i++) {
+            		System.out.println(arrOfStr[i]);
+            		u.ingredients.add(arrOfStr[i]);
+            	}
+            	menu.add(u);
+            	System.out.println();
+            }
+            reader.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return menu;
+	}
 	
 	public void changeScene(Parent pane) throws IOException{
 		//System.out.println("here3");
@@ -136,7 +179,7 @@ public class Main extends Application{
     	try {
             FileWriter writer = new FileWriter("Menu.txt", false);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            bufferedWriter.write("Hamburger 10.00 2 MenuHambuger.jpg ");
+            bufferedWriter.write("Hamburger 10.00 2 MenuHambuger.jpg Patty Buns Cheese");
             bufferedWriter.newLine();
  
             bufferedWriter.close();

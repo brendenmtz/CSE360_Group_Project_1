@@ -1,1 +1,2 @@
-Hamburger 10.00 2 MenuHambuger.jpg 
+Hamburger 10.00 2 MenuHambuger.jpg Patty Buns Cheese
+Pankcakes 9.00 1 Panckae.jpg Mix Water

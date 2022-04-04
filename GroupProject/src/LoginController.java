@@ -34,7 +34,16 @@ public class LoginController extends Information{
 	public void userLogIn(ActionEvent event) throws IOException {
 		//System.out.println("no");
 //		/System.out.println(user.username);
-		
+		for(int i = 0; i < menu.size(); i++) {
+			System.out.println(menu.get(i).name);
+			System.out.println(menu.get(i).price);
+			System.out.println(menu.get(i).makeTime);
+			System.out.println(menu.get(i).imageName);
+			System.out.println(menu.get(i).ingredients.size());
+			for(int j = 0; j < menu.get(i).ingredients.size(); j++) {
+				System.out.println(menu.get(i).ingredients.get(j));
+			}
+		}
 	    checkLogin();
 	
 	}
@@ -97,6 +106,7 @@ public class LoginController extends Information{
 			MenuController controller = loader.getController();
 			controller.changeScene(pane, user, menu, orderList, "customer");
 			controller.accountVis();
+			controller.addCircle();
 			//controller.accountUser = account;
 	    	//System.out.println("Going to menu 1");
 	    	//m.changeScene(pane);
