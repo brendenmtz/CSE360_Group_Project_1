@@ -1,7 +1,9 @@
+package GroupProject.src;
+
 public class Business extends User {
     private Address address;
 
-    //Constructor Business
+    //Constructor GroupProject.src.Business
     public Business(String username, String password, Address address) {
         this.username = username;
         this.password = password;

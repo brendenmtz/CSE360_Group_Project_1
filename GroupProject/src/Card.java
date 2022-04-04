@@ -1,3 +1,4 @@
+package GroupProject.src;
 
 public class Card {
     private String name;
@@ -5,7 +6,7 @@ public class Card {
     private int ccv;
     private int expirationdate;
 
-    //Constructor for Card
+    //Constructor for GroupProject.src.Card
     public Card(String name, int number, int ccv, int expirationdate) {
         this.name = name;
         this.number = number;

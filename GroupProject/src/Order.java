@@ -1,3 +1,5 @@
+package GroupProject.src;
+
 import java.text.DecimalFormat;
 
 public class Order {
@@ -9,13 +11,13 @@ public class Order {
     protected List cart;
     protected Card paymentMethod;
 
-    // Basic Constructor of an Order.
+    // Basic Constructor of an GroupProject.src.Order.
     public Order(){
         number = -1;
         cart = new List();
     }
 
-    // Proper Constructor of an Order. Includes all necessary information.
+    // Proper Constructor of an GroupProject.src.Order. Includes all necessary information.
     public Order(String name, int number, Card card){
         this.name = name;
         this.number = number;
@@ -25,7 +27,7 @@ public class Order {
 
     // SETTERS
 
-    // Changes payment method of an order to a new Card object
+    // Changes payment method of an order to a new GroupProject.src.Card object
     public void changePaymentMethod(Card card){
         paymentMethod = card;
     }
@@ -34,17 +36,17 @@ public class Order {
         this.number = number;
     }
 
-    // Adds "item" to the List "cart"
+    // Adds "item" to the GroupProject.src.List "cart"
     public void addToCart(Item item){
         cart.addItem(item);
     }
 
-    // Removes an Item from the List "cart"
+    // Removes an GroupProject.src.Item from the GroupProject.src.List "cart"
     public void removeFromCart(Item item){
         cart.removeItem(item);
     }
 
-    // Removes an Item from the List "cart" given a name
+    // Removes an GroupProject.src.Item from the GroupProject.src.List "cart" given a name
     public void removeFromCart(String itemName){
         cart.removeItem(itemName);
     }
@@ -53,7 +55,7 @@ public class Order {
 
     // Displays order bill
     public void Bill(){
-        System.out.println("Order: ");
+        System.out.println("GroupProject.src.Order: ");
         cart.printList("\n");
         displayTotal();
     }
