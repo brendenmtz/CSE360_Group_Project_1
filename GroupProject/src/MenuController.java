@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,6 +33,9 @@ public class MenuController extends Information{
 	private GridPane theMenu;
 	@FXML 
 	private Button cartBtn;
+	
+	private Button[] ingred;
+	private Button[] price;
 	public MenuController() {
 		//Circle c = new Circle(4, Color.WHITE);
 		//theMenu.add(c, 0, 0);
@@ -82,7 +86,7 @@ public class MenuController extends Information{
 		loader.setLocation(getClass().getResource("menu.fxml"));
 		pane = loader.load();
 		MenuController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, "customer");
+		controller.changeScene(pane, user, menu, orderList, previous);
 		controller.accountVis();
 		controller.addCircle();
 	}
@@ -133,7 +137,7 @@ public class MenuController extends Information{
 		loader.setLocation(getClass().getResource("menu.fxml"));
 		pane = loader.load();
 		MenuController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, "customer");
+		controller.changeScene(pane, user, menu, orderList, previous);
 		controller.accountVis();
 		controller.addCircle();
 	}
@@ -141,11 +145,12 @@ public class MenuController extends Information{
 		
 	}
 	public void addCircle() {
-		
+		ingred = new Button[menu.size()];
+		price = new Button[menu.size()];
 		//System.out.println(theMenu.getRowConstraints());
 		//System.out.println(theMenu.getColumnConstraints());
-		System.out.println("Going though the menu");
-		for(int i = 0; i < menu.size(); i++) {
+		//System.out.println("Going though the menu");
+		/*for(int i = 0; i < menu.size(); i++) {
 			System.out.println(menu.get(i).name);
 			System.out.println(menu.get(i).price);
 			System.out.println(menu.get(i).makeTime);
@@ -154,7 +159,7 @@ public class MenuController extends Information{
 			for(int j = 0; j < menu.get(i).ingredients.size(); j++) {
 				System.out.println(menu.get(i).ingredients.get(j));
 			}
-		}
+		}*/
 		int j = 0;
 		for(int i = 0; i < menu.size(); i++) {
 			if((i % 4 == 0) && (i > 0)) {
@@ -163,6 +168,10 @@ public class MenuController extends Information{
 			//Image img = new Image("Hamburger.jpg");
 			Button b1 = new Button(menu.get(i).name);
 			Button b2 = new Button("Ingredients");
+			price[i] = b1;
+			ingred[i] = b2;
+			price[i].setOnAction(new ButtonHandler());
+			ingred[i].setOnAction(new ButtonHandler());
 			/*if(i > theMenu.getWidth()) {
 				
 			}*/
@@ -234,4 +243,36 @@ public class MenuController extends Information{
 			userAccount.setVisible(true);
 		}
 	}
+
+
+	private class ButtonHandler implements EventHandler<ActionEvent> {
+
+		@Override
+		public void handle(ActionEvent event) {
+			System.out.println("action detecected");
+			// TODO Auto-generated method stub
+			for(int i = 0; i < ingred.length; i++) {
+				if(event.getSource() == ingred[i]) {
+					System.out.println("ingredients clicked");
+					System.out.println(menu.get(i).name);
+				}
+			}
+			for(int i = 0; i < price.length; i++) {
+				if(event.getSource() == price[i]) {
+					System.out.println("add to order clicked");
+					System.out.println(menu.get(i).name);
+					//Order od = new Order(menu.get(i).name);
+					
+					orderList.add(menu.get(i));
+				}
+			}
+			
+		}
+		
+    
+    }
+
+
+
 }
+
