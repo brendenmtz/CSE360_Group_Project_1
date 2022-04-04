@@ -23,11 +23,19 @@ public class Item {
         imageName = img;
     }
 
+    // Constructor of an Item. Sets the name to a given name and sets integer values to -1
+    public Item(String name){
+        this.name = name;
+        ingredients = new ArrayList<>();
+        price = -1;
+        makeTime = -1;
+    }
+
     // Base Constructor of an Item, price = -1 and no ingredients listed
     public Item(){
         ingredients = new ArrayList<>();
         price = -1;
-        makeTime = 0;
+        makeTime = -1;
         System.out.println("Empty Item Created.");
     }
 
@@ -103,6 +111,23 @@ public class Item {
 
     public String getImage(){
         return imageName;
+    }
+
+    // Checks if the item has appropriate values. Returns true if the item is complete, false if otherwise
+    public boolean checkItem(){
+        if(name.equals(""))
+            return false;
+        if (description.equals(""))
+            return false;
+        if(ingredients.isEmpty())
+            return false;
+        if(price == -1)
+            return false;
+        if(makeTime == -1)
+            return false;
+
+        // Returns false if imageName is an empty string, true if it is not
+        return !imageName.equals("");
     }
 }
 

@@ -34,6 +34,21 @@ public class Order {
         this.number = number;
     }
 
+    // Adds "item" to the List "cart"
+    public void addToCart(Item item){
+        cart.addItem(item);
+    }
+
+    // Removes an Item from the List "cart"
+    public void removeFromCart(Item item){
+        cart.removeItem(item);
+    }
+
+    // Removes an Item from the List "cart" given a name
+    public void removeFromCart(String itemName){
+        cart.removeItem(itemName);
+    }
+
     // GETTERS
 
     // Displays order bill

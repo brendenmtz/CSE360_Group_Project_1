@@ -12,14 +12,29 @@ public class List {
 
     // SETTERS
 
+    // Adds a fully completed item to the List
     public void addItem(Item item){
         items.add(item);
         total += item.getPrice();
     }
 
+    // Removes an item from the List
     public void removeItem(Item item){
         items.remove(item);
         total -= item.getPrice();
+    }
+
+    // Removes an item from the List given a name. Returns 0 on a successful runtime and -1 on an unsuccessful runtime.
+    public int removeItem(String itemName){
+        for(Item item : items){
+            if(item.name.equals(itemName)) {
+                items.remove(item);
+                total -= item.getPrice();
+                return 0;
+            }
+        }
+
+        return -1;
     }
 
     // GETTERS/PRINTERS
