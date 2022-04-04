@@ -255,6 +255,21 @@ public class MenuController extends Information{
 				if(event.getSource() == ingred[i]) {
 					System.out.println("ingredients clicked");
 					System.out.println(menu.get(i).name);
+					loader.setLocation(getClass().getResource("ingredients.fxml"));
+					try {
+						pane = loader.load();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					IngredientController controller = loader.getController();
+					try {
+						
+						controller.changeScene(pane, user, menu, orderList, previous);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 			for(int i = 0; i < price.length; i++) {
@@ -263,7 +278,7 @@ public class MenuController extends Information{
 					System.out.println(menu.get(i).name);
 					//Order od = new Order(menu.get(i).name);
 					
-					orderList.add(menu.get(i));
+					//orderList.add(menu.get(i));
 				}
 			}
 			

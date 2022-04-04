@@ -1,10 +1,12 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 //import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class IngredientController extends Information {
@@ -30,6 +32,18 @@ public class IngredientController extends Information {
 		controller.changeScene(pane, user, menu, orderList, previous);
 		controller.accountVis();
 		controller.addCircle();
+	}
+	
+	public void setData(String itemName, String imgUrl, String itemPrice, ArrayList<String> ingredients) {
+		Image temp = new Image(imgUrl);
+		img.setImage(temp);
+		//img = new ImageView(temp);
+		name.setText(itemName);
+		price.setText(itemPrice);
+		String ingred = "";
+		for(int i = 0; i < ingredients.size(); i++) {
+			ingred = ingred + " " + ingredients.get(i); 
+		}
 	}
 
 }

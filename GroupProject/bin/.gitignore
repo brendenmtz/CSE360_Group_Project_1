@@ -4,3 +4,5 @@
 /ingredients.fxml
 /IngredientController.class
 /MenuController$ButtonHandler.class
+/Order.class
+/Queue.class
