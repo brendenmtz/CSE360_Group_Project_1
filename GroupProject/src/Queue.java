@@ -5,11 +5,14 @@
 import java.util.ArrayList;
 
 public class Queue {
+    //int inLine;
     int currentNumber;
     ArrayList<Order> orders;
 
     // Basic Constructor of GroupProject.src.Queue
     public Queue(){
+        //inLine = 0;
+    	currentNumber = 0;
         orders = new ArrayList<>();
     }
 
@@ -21,11 +24,13 @@ public class Queue {
         order.setNumber(currentNumber);
 
         orders.add(order);
+        //inLine++;
     }
 
     // Removes an order from the queue
     public void removeOrder(Order order){
         orders.remove(order);
+        //inLine--;
     }
 
     // GETTERS
@@ -55,17 +60,13 @@ public class Queue {
 
     // Displays number of people in line
     public void displayInLine(){
-        System.out.println("Currently in line: " + orders.size());
+        //System.out.println("Currently in line: " + inLine);
     }
 
     // Returns number of people in line
-    public ArrayList<Orders> getQueue(){
-        return orders;
-    }
-    
-    public int getSize() {
-    	return orders.size();
-    }
+    /*public int getInLine(){
+        return inLine;
+    }*/
 
     // Returns place of order in the line
     public int getPlace(Order order){

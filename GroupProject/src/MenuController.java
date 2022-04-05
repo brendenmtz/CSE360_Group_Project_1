@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,6 +33,9 @@ public class MenuController extends Information{
 	private GridPane theMenu;
 	@FXML 
 	private Button cartBtn;
+	
+	private Button[] ingred;
+	private Button[] price;
 	public MenuController() {
 		//Circle c = new Circle(4, Color.WHITE);
 		//theMenu.add(c, 0, 0);
@@ -82,7 +86,7 @@ public class MenuController extends Information{
 		loader.setLocation(getClass().getResource("menu.fxml"));
 		pane = loader.load();
 		MenuController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, "customer");
+		controller.changeScene(pane, user, menu, orderList, previous, queue);
 		controller.accountVis();
 		controller.addCircle();
 	}
@@ -133,28 +137,23 @@ public class MenuController extends Information{
 		loader.setLocation(getClass().getResource("menu.fxml"));
 		pane = loader.load();
 		MenuController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, "customer");
+		controller.changeScene(pane, user, menu, orderList, previous, queue);
 		controller.accountVis();
 		controller.addCircle();
 	}
-	public void cartBtn() {
-		
+	public void cartBtn() throws IOException {
+		loader.setLocation(getClass().getResource("cart.fxml"));
+		Parent pane = loader.load();
+		CartController controller = loader.getController();
+		controller.changeScene(pane, user, menu, orderList, previous, queue);
+		controller.cartSetup("menu");
+		//m.changeScene(pane);
 	}
 	public void addCircle() {
-		
-		//System.out.println(theMenu.getRowConstraints());
-		//System.out.println(theMenu.getColumnConstraints());
-		System.out.println("Going though the menu");
-		for(int i = 0; i < menu.size(); i++) {
-			System.out.println(menu.get(i).name);
-			System.out.println(menu.get(i).price);
-			System.out.println(menu.get(i).makeTime);
-			System.out.println(menu.get(i).imageName);
-			System.out.println(menu.get(i).ingredients.size());
-			for(int j = 0; j < menu.get(i).ingredients.size(); j++) {
-				System.out.println(menu.get(i).ingredients.get(j));
-			}
-		}
+		System.out.println("within circle");
+		//order = new Order();//dont 
+		ingred = new Button[menu.size()];
+		price = new Button[menu.size()];
 		int j = 0;
 		for(int i = 0; i < menu.size(); i++) {
 			if((i % 4 == 0) && (i > 0)) {
@@ -163,13 +162,12 @@ public class MenuController extends Information{
 			//Image img = new Image("Hamburger.jpg");
 			Button b1 = new Button(menu.get(i).name);
 			Button b2 = new Button("Ingredients");
-			/*if(i > theMenu.getWidth()) {
-				
-			}*/
-			//theMenu.add(img, i-j*4, j);
-			//String url = "/" + menu.get(i).imageName;
-			//final Image selectedImage = new ImageView(MenuController.getClass().getResourceAsStream(menu.get(i).imageName)).getImage();
-			Image img = new Image("Hamburger.jpg");
+			price[i] = b1;
+			ingred[i] = b2;
+			price[i].setOnAction(new ButtonHandler());
+			ingred[i].setOnAction(new ButtonHandler());
+			//System.out.println();
+			Image img = new Image(menu.get(i).imageName);
 			ImageView img2 = new ImageView(img);
 			img2.setFitWidth(100);
 			img2.setFitHeight(100);
@@ -196,13 +194,13 @@ public class MenuController extends Information{
 			loader.setLocation(getClass().getResource("ownerAccount.fxml"));
 			Parent pane = loader.load();
 			OwnerAccountController controller = loader.getController();
-			controller.changeScene(pane, user, menu, orderList, "owner");
+			controller.changeScene(pane, user, menu, orderList, "owner", queue);
 			m.changeScene(pane);
 		}else {
 			loader.setLocation(getClass().getResource("login.fxml"));
 			Parent pane = loader.load();
 			LoginController controller = loader.getController();
-			controller.changeScene(pane, user, menu, orderList, "customer");
+			controller.changeScene(pane, user, menu, orderList, "customer", queue);
 			m.changeScene(pane);
 		}
 		
@@ -220,7 +218,7 @@ public class MenuController extends Information{
 		loader.setLocation(getClass().getResource("userAccount.fxml"));
 		Parent pane = loader.load();
 		UserAccountController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, "menu");
+		controller.changeScene(pane, user, menu, orderList, "menu", queue);
 		controller.setLabels();
 		//controller.accountUser = accountUser;
 		//controller.setLabels(accountUser);
@@ -228,10 +226,56 @@ public class MenuController extends Information{
 	}
 	
 	public void accountVis() {
+		System.out.println("within account Vision");
 		if(previous.compareTo("owner") == 0) {
 			userAccount.setVisible(false);
+			cartBtn.setVisible(false);
 		}else {
 			userAccount.setVisible(true);
+			cartBtn.setVisible(true);
 		}
 	}
+
+
+	private class ButtonHandler implements EventHandler<ActionEvent> {
+
+		@Override
+		public void handle(ActionEvent event){
+			System.out.println("action detecected");
+			// TODO Auto-generated method stub
+			for(int i = 0; i < ingred.length; i++) {
+				if(event.getSource() == ingred[i]) {
+					System.out.println("ingredients clicked");
+					System.out.println(menu.get(i).name);
+					try {
+						loader.setLocation(getClass().getResource("ingredients.fxml"));
+						pane = loader.load();
+						IngredientController controller = loader.getController();
+						controller.changeScene(pane, user, menu, orderList, previous, queue);
+						controller.setData(menu.get(i).name, menu.get(i).imageName, "" + menu.get(i).price, menu.get(i).ingredients, "menu");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+			}
+			for(int i = 0; i < price.length; i++) {
+				if(event.getSource() == price[i]) {
+					System.out.println("add to order clicked");
+					System.out.println();
+					System.out.println(menu.get(i).name);
+					//create the order somewhere else
+					//System.out.println(menu.get(i).getClass());
+					orderList.addToCart(menu.get(i));
+					//orderList.add(menu.get(i));
+				}
+			}
+			System.out.println(orderList.cart.total);	
+		}    
+    }
+
+
+
 }
+

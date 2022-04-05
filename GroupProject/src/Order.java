@@ -8,20 +8,21 @@ public class Order {
 
     private static final DecimalFormat DoubleFormat = new DecimalFormat("0.00");
 
-    protected String name;
-    protected int number;
+    protected User user;
+    protected int orderNumber;
     protected List cart;
-    protected int paymentMethod;
+    protected long paymentMethod;//changed because a number with 16 digits is too big for double or int
 
     // Basic Constructor of an GroupProject.src.Order.
     public Order(){
-        number = -1;
+        orderNumber = -1;
         cart = new List();
     }
 
-    public Order(String name, int number, int card){
-        this.name = name;
-        this.number = number;
+    public Order(User name, int number, long card){
+    	System.out.println("Within Order Constructor");
+        this.user = name;
+        this.orderNumber = number;//location in queue
         cart = new List();
         paymentMethod = card;
     }
@@ -34,22 +35,18 @@ public class Order {
     }
 
     public void setNumber(int number){
-        this.number = number;
+        this.orderNumber = number;
     }
 
     // Adds "item" to the GroupProject.src.List "cart"
     public void addToCart(Item item){
+    	System.out.println("adding to cart");
         cart.addItem(item);
     }
 
     // Removes an GroupProject.src.Item from the GroupProject.src.List "cart"
     public void removeFromCart(Item item){
         cart.removeItem(item);
-    }
-
-    // Removes an GroupProject.src.Item from the GroupProject.src.List "cart" given a name
-    public void removeFromCart(String itemName){
-        cart.removeItem(itemName);
     }
 
     // GETTERS
@@ -68,8 +65,8 @@ public class Order {
     }
 
     // Gets name of an order
-    public String getName(){
-        return name;
+    public User getName(){
+        return user;
     }
 
     public int getTime(){

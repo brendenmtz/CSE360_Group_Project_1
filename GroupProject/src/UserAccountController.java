@@ -33,7 +33,7 @@ public class UserAccountController extends Information{
 		loader.setLocation(getClass().getResource("menu.fxml"));
 		pane = loader.load();
 		MenuController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, "userAccount");
+		controller.changeScene(pane, user, menu, orderList, previous, queue);
 		controller.addCircle();
 	}
 	
