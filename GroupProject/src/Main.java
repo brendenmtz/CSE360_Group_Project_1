@@ -34,7 +34,7 @@ public class Main extends Application{
 	Queue queue;
 	public void start(Stage stage) throws Exception{
 		stg = stage;
-		
+		//System.out.println("i am here");
 		
 		createMenu();
 		menu = getMenu();

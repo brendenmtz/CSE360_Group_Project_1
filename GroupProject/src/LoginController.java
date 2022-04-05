@@ -69,7 +69,7 @@ public class LoginController extends Information{
             BufferedReader bufferedReader = new BufferedReader(reader);
  
             String line;
- 
+            //System.out.println("before reading");
             while (((line = bufferedReader.readLine()) != null) && !validLogin) {
                 //System.out.println(line);
             	String[] userInfo = line.split(" ", 4);//used for when reading from file
@@ -144,9 +144,12 @@ public class LoginController extends Information{
 	    //m.currentAccount = account;
 	    //System.out.println(account);
 	    System.out.println("Above is the account in createAccountBtn");
-	    Parent pane = FXMLLoader.load(getClass().getResource("createAccount.fxml"));
+	    loader.setLocation(getClass().getResource("createAccount.fxml"));
+		pane = loader.load();
+		CreateAccountController controller = loader.getController();
+		controller.changeScene(pane, user, menu, orderList, previous, queue);
 	    //CreateAccountController ac = new CreateAccountController(account);
-	    m.changeScene(pane);
+	    //m.changeScene(pane);
 	    //CreateAccountController ac = new CreateAccountController(account);
 	
 	}

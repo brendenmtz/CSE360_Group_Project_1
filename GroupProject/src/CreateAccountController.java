@@ -40,9 +40,10 @@ public class CreateAccountController extends Information{
 	
 	
 	public void createAccountBack(ActionEvent event) throws IOException, FileNotFoundException{
-		Main m = new Main();
-		Parent pane = FXMLLoader.load(getClass().getResource("login.fxml"));
-		m.changeScene(pane);
+		loader.setLocation(getClass().getResource("createAccount.fxml"));
+		pane = loader.load();
+		CreateAccountController controller = loader.getController();
+		controller.changeScene(pane, user, menu, orderList, previous, queue);
 	}
 	
 	public void createAccount(ActionEvent event) throws IOException{
@@ -92,9 +93,10 @@ public class CreateAccountController extends Information{
 			wrongUsernameText.setText("Invalid Username");
 
 		}
-		Main m = new Main();
-		Parent pane = FXMLLoader.load(getClass().getResource("login.fxml"));
-		m.changeScene(pane);
+		loader.setLocation(getClass().getResource("login.fxml"));
+		pane = loader.load();
+		LoginController controller = loader.getController();
+		controller.changeScene(pane, user, menu, orderList, previous, queue);
 	}
 	
 	public void writeToFile(String user, String password, String card) {
