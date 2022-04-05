@@ -134,6 +134,8 @@ public class CartController extends Information{
 	}
 	
 	public void remove() {
+		remove.setVisible(false);
+		description.setVisible(false);
 		orderList.cart.removeItem(orderList.cart.items.get(selectedI));
 		total.setText("Total: $" + DoubleFormat.format(orderList.cart.total));
 		for(int i = 0; i < orderList.cart.items.size(); i++) {

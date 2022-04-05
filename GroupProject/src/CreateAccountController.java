@@ -40,9 +40,9 @@ public class CreateAccountController extends Information{
 	
 	
 	public void createAccountBack(ActionEvent event) throws IOException, FileNotFoundException{
-		loader.setLocation(getClass().getResource("createAccount.fxml"));
+		loader.setLocation(getClass().getResource("login.fxml"));
 		pane = loader.load();
-		CreateAccountController controller = loader.getController();
+		LoginController controller = loader.getController();
 		controller.changeScene(pane, user, menu, orderList, previous, queue);
 	}
 	

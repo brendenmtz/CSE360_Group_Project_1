@@ -26,9 +26,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Label layoutX="243.0" layoutY="2.0" text="Menu">
+            <Label layoutX="244.0" layoutY="3.0" text="Menu">
                <font>
-                  <Font size="45.0" />
+                  <Font size="40.0" />
                </font>
             </Label>
             <Button fx:id="menuBack" layoutY="2.0" mnemonicParsing="false" onAction="#menuBack" text="Back" />
