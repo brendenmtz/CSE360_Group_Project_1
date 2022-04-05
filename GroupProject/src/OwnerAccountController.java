@@ -51,7 +51,7 @@ public class OwnerAccountController extends Information{
 		loader.setLocation(getClass().getResource("login.fxml"));
 		pane = loader.load();
 		LoginController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, "owner");
+		controller.changeScene(pane, user, menu, orderList, "owner", queue);
 	}
 	
 	public void menuBtn(ActionEvent event) throws IOException {
@@ -59,7 +59,7 @@ public class OwnerAccountController extends Information{
 		loader.setLocation(getClass().getResource("menu.fxml"));
 		pane = loader.load();
 		MenuController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, "owner");
+		controller.changeScene(pane, user, menu, orderList, "owner", queue);
 		controller.accountVis();
 		controller.addCircle();
 	}

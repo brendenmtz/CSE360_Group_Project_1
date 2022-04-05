@@ -21,20 +21,27 @@ public class IngredientController extends Information {
 	@FXML
 	private TextArea ingredients;
 	
+	String previousS;
+	
 	public IngredientController() {
 		
 	}
 	
 	public void backToMenu() throws IOException {
-		loader.setLocation(getClass().getResource("menu.fxml"));
-		pane = loader.load();
-		MenuController controller = loader.getController();
-		controller.changeScene(pane, user, menu, orderList, previous);
-		controller.accountVis();
-		controller.addCircle();
+		if(previousS.compareTo("menu") == 0) {
+			loader.setLocation(getClass().getResource("menu.fxml"));
+			pane = loader.load();
+			MenuController controller = loader.getController();
+			controller.changeScene(pane, user, menu, orderList, previous, queue);
+			controller.accountVis();
+			controller.addCircle();
+		}else if(previousS.compareTo("cart") == 0) {
+			
+		}
+		
 	}
 	
-	public void setData(String itemName, String imgUrl, String itemPrice, ArrayList<String> ingredientsList) {
+	public void setData(String itemName, String imgUrl, String itemPrice, ArrayList<String> ingredientsList, String prev) {
 		Image temp = new Image(imgUrl);
 		img.setImage(temp);
 		//img = new ImageView(temp);
@@ -45,6 +52,7 @@ public class IngredientController extends Information {
 			ingred = ingred + " " + ingredientsList.get(i); 
 		}
 		ingredients.setText(ingred);
+		previousS = prev;
 	}
 	
 

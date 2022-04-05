@@ -11,7 +11,7 @@ public class Order {
     protected User user;
     protected int orderNumber;
     protected List cart;
-    protected int paymentMethod;
+    protected long paymentMethod;//changed because a number with 16 digits is too big for double or int
 
     // Basic Constructor of an GroupProject.src.Order.
     public Order(){
@@ -19,7 +19,8 @@ public class Order {
         cart = new List();
     }
 
-    public Order(User name, int number, int card){
+    public Order(User name, int number, long card){
+    	System.out.println("Within Order Constructor");
         this.user = name;
         this.orderNumber = number;//location in queue
         cart = new List();
@@ -39,17 +40,13 @@ public class Order {
 
     // Adds "item" to the GroupProject.src.List "cart"
     public void addToCart(Item item){
+    	System.out.println("adding to cart");
         cart.addItem(item);
     }
 
     // Removes an GroupProject.src.Item from the GroupProject.src.List "cart"
     public void removeFromCart(Item item){
         cart.removeItem(item);
-    }
-
-    // Removes an GroupProject.src.Item from the GroupProject.src.List "cart" given a name
-    public void removeFromCart(String itemName){
-        cart.removeItem(itemName);
     }
 
     // GETTERS

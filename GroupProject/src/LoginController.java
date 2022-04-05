@@ -34,7 +34,7 @@ public class LoginController extends Information{
 	public void userLogIn(ActionEvent event) throws IOException {
 		//System.out.println("no");
 //		/System.out.println(user.username);
-		for(int i = 0; i < menu.size(); i++) {
+		/*for(int i = 0; i < menu.size(); i++) {
 			System.out.println(menu.get(i).name);
 			System.out.println(menu.get(i).price);
 			System.out.println(menu.get(i).makeTime);
@@ -43,7 +43,7 @@ public class LoginController extends Information{
 			for(int j = 0; j < menu.get(i).ingredients.size(); j++) {
 				System.out.println(menu.get(i).ingredients.get(j));
 			}
-		}
+		}*/
 	    checkLogin();
 	
 	}
@@ -99,12 +99,21 @@ public class LoginController extends Information{
 	}
 	
 	public void scenceCheck(boolean login, boolean customer) throws IOException {
-		
 		if(login && customer) {
+			//orderList = new Order();
+			System.out.println("within customer");
 			loader.setLocation(getClass().getResource("menu.fxml"));
 			pane = loader.load();
+			System.out.println("within customer2");
 			MenuController controller = loader.getController();
-			controller.changeScene(pane, user, menu, orderList, "customer");
+			System.out.println("within customer3");
+			int num = queue.currentNumber+1;
+			long card = Long.parseLong(user.card);
+			System.out.println("within customer4");
+			System.out.println(card);
+			
+			orderList = new Order(user, num, card);
+			controller.changeScene(pane, user, menu, orderList, "customer", queue);
 			controller.accountVis();
 			controller.addCircle();
 			//controller.accountUser = account;
@@ -117,9 +126,10 @@ public class LoginController extends Information{
 	    	loader.setLocation(getClass().getResource("ownerAccount.fxml"));
 	    	
 			pane = loader.load();
+			orderList = new Order();
 			System.out.println("here 3");
 			OwnerAccountController controller = loader.getController();
-			controller.changeScene(pane, user, menu, orderList, "owner");
+			controller.changeScene(pane, user, menu, orderList, "owner", queue);
 			//controller.accountUser = account;
 	    	//System.out.println("Going to menu 1");
 	    	//m.changeScene(pane);
