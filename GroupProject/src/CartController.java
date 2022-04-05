@@ -134,7 +134,8 @@ public class CartController extends Information{
 	}
 	
 	public void remove() {
-		orderList.cart.items.remove(selectedI);
+		orderList.cart.removeItem(orderList.cart.items.get(selectedI));
+		total.setText("Total: $" + DoubleFormat.format(orderList.cart.total));
 		for(int i = 0; i < orderList.cart.items.size(); i++) {
 			System.out.println(orderList.cart.items.get(i).name);
 		}
@@ -150,12 +151,18 @@ public class CartController extends Information{
 	}
 	
 	public void description() throws IOException {//will change scene to the item description
-		orderList.cart.items.get(selectedI);
+		Item itm = orderList.cart.items.get(selectedI);
+		int menuIdx = 0;
+		for(int i = 0; i < menu.size(); i ++) {
+			if(itm.name.compareTo(menu.get(i).name) == 0) {
+				menuIdx = i;
+			}
+		}
 		loader.setLocation(getClass().getResource("ingredients.fxml"));
 		pane = loader.load();
 		IngredientController controller = loader.getController();
 		controller.changeScene(pane, user, menu, orderList, previous, queue);
-		controller.setData(menu.get(selectedI).name, menu.get(selectedI).imageName, "" + menu.get(selectedI).price, menu.get(selectedI).ingredients, "cart");
+		controller.setData(menu.get(menuIdx).name, menu.get(menuIdx).imageName, "" + menu.get(menuIdx).price, menu.get(menuIdx).ingredients, "cart");
 	}
 	
 	public void toOrder() {//reveals button to the queue

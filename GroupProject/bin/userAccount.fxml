@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserAccountController">
@@ -15,10 +16,14 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" layoutX="273.0" layoutY="135.0" text="Brenden" textAlignment="CENTER" wrapText="true" />
-            <Label fx:id="password" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="173.0" text="123" textAlignment="CENTER" wrapText="true" />
-            <Label fx:id="card" alignment="CENTER" contentDisplay="CENTER" layoutX="248.0" layoutY="214.0" text="1000000000000000" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="backBtn" layoutX="6.0" layoutY="8.0" mnemonicParsing="false" onAction="#backBtn" text="Back" />
+            <VBox alignment="CENTER" layoutX="183.0" layoutY="150.0" prefHeight="200.0" prefWidth="234.0" spacing="25.0">
+               <children>
+                  <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" text="Brenden" textAlignment="CENTER" wrapText="true" />
+                  <Label fx:id="password" alignment="CENTER" contentDisplay="CENTER" text="123" textAlignment="CENTER" wrapText="true" />
+                  <Label fx:id="card" alignment="CENTER" contentDisplay="CENTER" text="1000000000000000" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>

@@ -36,7 +36,7 @@ public class Main extends Application{
 		stg = stage;
 		//System.out.println("i am here");
 		
-		createMenu();
+		//createMenu();
 		menu = getMenu();
 		/*for(int i = 0; i < menu.size(); i++) {
 			System.out.println(menu.get(i).name);

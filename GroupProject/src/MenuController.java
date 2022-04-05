@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
@@ -36,6 +37,7 @@ public class MenuController extends Information{
 	
 	private Button[] ingred;
 	private Button[] price;
+	private static final DecimalFormat DoubleFormat = new DecimalFormat("0.00");
 	public MenuController() {
 		//Circle c = new Circle(4, Color.WHITE);
 		//theMenu.add(c, 0, 0);
@@ -172,7 +174,7 @@ public class MenuController extends Information{
 			img2.setFitWidth(100);
 			img2.setFitHeight(100);
 			
-			Label price = new Label("$"+ menu.get(i).price);
+			Label price = new Label("$"+ DoubleFormat.format(menu.get(i).price));
 			VBox box = new VBox();
 			//HBox box2 = new HBox();
 			//box2.getChildren().add(new ImageView(img));

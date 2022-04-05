@@ -24,9 +24,9 @@ public class UserAccountController extends Information{
 
 	public void setLabels() {
 		System.out.println("Labels");
-		username.setText(user.username);
-		password.setText(user.password);
-		card.setText(user.card);
+		username.setText("Username: " + user.username);
+		password.setText("Password: " + user.password);
+		card.setText("Card: " + user.card);
 	}
 	
 	public void backBtn(ActionEvent event) throws IOException {

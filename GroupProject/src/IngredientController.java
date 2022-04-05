@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
@@ -21,6 +22,8 @@ public class IngredientController extends Information {
 	private Label price;
 	@FXML
 	private TextArea ingredients;
+	
+	private static final DecimalFormat DoubleFormat = new DecimalFormat("0.00");
 	
 	String previousS;
 	
@@ -47,11 +50,13 @@ public class IngredientController extends Information {
 	}
 	
 	public void setData(String itemName, String imgUrl, String itemPrice, ArrayList<String> ingredientsList, String prev) {
+		System.out.println("Setting Data");
 		Image temp = new Image(imgUrl);
 		img.setImage(temp);
 		//img = new ImageView(temp);
 		name.setText(itemName);
-		price.setText(itemPrice);
+		//System.out.println());
+		price.setText("$" + DoubleFormat.format(Double.parseDouble(itemPrice)));
 		String ingred = "";
 		for(int i = 0; i < ingredientsList.size(); i++) {
 			ingred = ingred + " " + ingredientsList.get(i); 
