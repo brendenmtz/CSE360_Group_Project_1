@@ -229,8 +229,10 @@ public class MenuController extends Information{
 		System.out.println("within account Vision");
 		if(previous.compareTo("owner") == 0) {
 			userAccount.setVisible(false);
+			cartBtn.setVisible(false);
 		}else {
 			userAccount.setVisible(true);
+			cartBtn.setVisible(true);
 		}
 	}
 

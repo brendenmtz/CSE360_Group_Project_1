@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -23,14 +24,29 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <VBox fx:id="items" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="319.0" spacing="10.0">
+            <VBox fx:id="items" alignment="TOP_CENTER" prefHeight="375.0" prefWidth="240.0" spacing="10.0">
                <children>
-                  <Label text="Item" />
+                  <Label fx:id="itemLabel" text="Item">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
                </children>
             </VBox>
-            <VBox fx:id="prices" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="205.0" spacing="10.0">
+            <VBox fx:id="prices" alignment="TOP_CENTER" prefHeight="375.0" prefWidth="127.0" spacing="10.0">
                <children>
-                  <Label text="Price" />
+                  <Label fx:id="pricesLabel" text="Price">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox fx:id="checkboxes" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label fx:id="checkboxLabel">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>
@@ -46,6 +62,9 @@
             <Button fx:id="description" layoutX="28.0" layoutY="120.0" mnemonicParsing="false" onAction="#description" text="Item Description" visible="false" />
             <Button fx:id="bill" layoutX="205.0" layoutY="354.0" mnemonicParsing="false" onAction="#toOrder" text="CheckOut" />
             <Button fx:id="order" layoutX="74.0" layoutY="193.0" mnemonicParsing="false" onAction="#toQueue" prefHeight="83.0" prefWidth="132.0" text="Confirm Order" visible="false" />
+            <Label fx:id="cardLabel" layoutX="37.0" layoutY="112.0" text="Card: " visible="false" />
+            <TextField fx:id="cardNumber" layoutX="66.0" layoutY="108.0" visible="false" />
+            <Label fx:id="cardError" layoutX="93.0" layoutY="145.0" text="Bad Card Number" textFill="#f80000" visible="false" />
          </children>
       </AnchorPane>
       <Button fx:id="back" mnemonicParsing="false" onAction="#back" text="Back" />

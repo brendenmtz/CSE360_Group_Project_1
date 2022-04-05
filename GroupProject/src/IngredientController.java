@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 //import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,7 +37,11 @@ public class IngredientController extends Information {
 			controller.accountVis();
 			controller.addCircle();
 		}else if(previousS.compareTo("cart") == 0) {
-			
+			loader.setLocation(getClass().getResource("cart.fxml"));
+			Parent pane = loader.load();
+			CartController controller = loader.getController();
+			controller.changeScene(pane, user, menu, orderList, previous, queue);
+			controller.cartSetup("menu");
 		}
 		
 	}
