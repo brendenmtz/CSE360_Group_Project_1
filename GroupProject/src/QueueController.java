@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -27,9 +28,19 @@ public class QueueController extends Information{
 		queue.addOrder(orderList);
 		queue.currentNumber = orderList.orderNumber;
 		//writeToQueue();//here you add the order to the queue
-		System.out.println(queue.orders.get(0).cart.items.get(0).makeTime);
+		int waitTime = 0;
+		for(int i = 0; i < queue.orders.size(); i++) {
+			Order currOrder = queue.orders.get(i);
+			for(int j = 0; j < currOrder.cart.items.size(); j++) {
+				Item currItem = currOrder.cart.items.get(j);
+				System.out.println(currItem.name);
+				System.out.println(currItem.makeTime);
+				waitTime += currItem.makeTime;
+			}
+		}
+		System.out.println(waitTime);
 		
-		waitingMess.setText(queue.orders.size() + " people are in front of you.\nOrder ready in ");
+		waitingMess.setText(queue.orders.size()-1 + " people are in front of you.\nOrder ready in " + waitTime + " minutes");
 	}
 	
 	public void writeToQueue() {
@@ -56,6 +67,7 @@ public class QueueController extends Information{
 	}
 	
 	public void loggingOut() throws IOException {
+		System.out.println("log out");
 		loader.setLocation(getClass().getResource("login.fxml"));
 		Parent pane = loader.load();
 		LoginController controller = loader.getController();

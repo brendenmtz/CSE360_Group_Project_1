@@ -92,6 +92,9 @@ public class CreateAccountController extends Information{
 			wrongUsernameText.setText("Invalid Username");
 
 		}
+		Main m = new Main();
+		Parent pane = FXMLLoader.load(getClass().getResource("login.fxml"));
+		m.changeScene(pane);
 	}
 	
 	public void writeToFile(String user, String password, String card) {
