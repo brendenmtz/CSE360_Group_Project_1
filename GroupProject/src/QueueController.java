@@ -27,7 +27,7 @@ public class QueueController extends Information{
 		orderNum.setText("Order #" + orderList.orderNumber);
 		queue.addOrder(orderList);
 		queue.currentNumber = orderList.orderNumber;
-		//writeToQueue();//here you add the order to the queue
+		writeToQueue();//here you add the order to the queue
 		int waitTime = 0;
 		for(int i = 0; i < queue.orders.size(); i++) {
 			Order currOrder = queue.orders.get(i);
